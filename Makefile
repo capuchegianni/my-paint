@@ -24,7 +24,7 @@ build_lib:
 	make -sC lib/my_csfml_lib/
 
 $(NAME): $(OBJ) build_lib
-	gcc $(SRC) $(WARNING_FLAGS) -o $(NAME) $(LIB_FLAGS)
+	gcc $(SRC) $(WARNING_FLAGS) -o $(NAME) $(LIB_FLAGS) $(CSFML_FLAGS)
 	@echo -n "[ "
 	@echo -n "\e[1;34mOK\e[0m"
 	@echo -n " ] "

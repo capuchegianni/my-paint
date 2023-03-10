@@ -7,14 +7,13 @@
 
 #include <SFML/Graphics.h>
 #include <stdlib.h>
-#include "my_csfml_lib.h"
-#include "../../include/my.h"
+#include "my_csfml.h"
 
 int my_print_text(sfRenderWindow *window, int size)
 {
     sfText *text = sfText_create();
     sfFont *font = sfFont_createFromFile("assets/fonts/Aero-03.ttf");
-    char *str = "Please resize your window to be able to play\n";
+    char *str = "POUET POUET";
     sfVector2u frame_size = sfRenderWindow_getSize(window);
     int print_mid_x = frame_size.x / 2;
     int print_mid_y = frame_size.y / 2;

@@ -6,7 +6,7 @@
 */
 
 #include <SFML/Graphics.h>
-#include "my_csfml_lib.h"
+#include "my_csfml.h"
 
 int my_close_window(sfRenderWindow *window)
 {

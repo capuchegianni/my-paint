@@ -6,9 +6,9 @@
 */
 
 #include <SFML/Graphics.h>
-#include "my_csfml_lib.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "my_csfml.h"
 
 int my_animated_sprite(sfRenderWindow *window, int i)
 {

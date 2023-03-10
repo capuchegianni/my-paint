@@ -7,9 +7,8 @@
 
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
-#include "my_csfml_lib.h"
-#include "../../include/my.h"
 #include <stdio.h>
+#include "my_csfml.h"
 
 void window_is_closed(sfRenderWindow *window, sfMusic *music)
 {

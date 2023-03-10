@@ -6,8 +6,7 @@
 */
 
 #include <SFML/Graphics.h>
-#include "my_csfml_lib.h"
-#include "../../include/my.h"
+#include "my_csfml.h"
 
 int my_background(sfRenderWindow *window)
 {
