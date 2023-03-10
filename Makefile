@@ -23,7 +23,8 @@ build_lib:
 	make -sC lib/my/
 	make -sC lib/my_csfml_lib/
 
-$(NAME): $(OBJ) build_lib
+$(NAME): $(OBJ)
+	make build_lib
 	gcc $(SRC) $(WARNING_FLAGS) -o $(NAME) $(LIB_FLAGS) $(CSFML_FLAGS)
 	@echo -n "[ "
 	@echo -n "\e[1;34mOK\e[0m"
@@ -43,7 +44,7 @@ cstyle:
 	make fclean -s
 	../coding-style-checker/coding-style.sh . .
 	../coding-style-checker/print_infos.sh
-	make re -s
+	make -s
 
 clean_tests:
 	rm -f *.gcda

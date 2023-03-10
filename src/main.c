@@ -6,7 +6,6 @@
 */
 
 #include "../include/my.h"
-#include "../include/project.h"
 
 int main(void)
 {
