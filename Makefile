@@ -5,7 +5,18 @@
 ## Makefile to compile the project
 ##
 
-SRC = 	src/main.c							\
+SRC = 	./src/main.c							\
+		./src/menu/menu.c						\
+		./src/menu/edition/editionmenu.c		\
+		./src/menu/edition/eraser.c				\
+		./src/menu/edition/pencil.c				\
+		./src/menu/file/filemenu.c				\
+		./src/menu/file/newfile.c				\
+		./src/menu/file/openfile.c				\
+		./src/menu/file/savefile.c				\
+		./src/menu/help/helpmenu.c				\
+		./src/menu/help/about.c					\
+		./src/menu/help/help.c					\
 
 OBJ = $(SRC:.c=.o)
 
@@ -23,7 +34,8 @@ build_lib:
 	make -sC lib/my/
 	make -sC lib/my_csfml_lib/
 
-$(NAME): $(OBJ) build_lib
+$(NAME): $(OBJ)
+	make build_lib
 	gcc $(SRC) $(WARNING_FLAGS) -o $(NAME) $(LIB_FLAGS) $(CSFML_FLAGS)
 	@echo -n "[ "
 	@echo -n "\e[1;34mOK\e[0m"
@@ -43,7 +55,7 @@ cstyle:
 	make fclean -s
 	../coding-style-checker/coding-style.sh . .
 	../coding-style-checker/print_infos.sh
-	make re -s
+	make -s
 
 clean_tests:
 	rm -f *.gcda
