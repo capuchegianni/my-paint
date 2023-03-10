@@ -6,6 +6,9 @@
 *.gcov
 *.o
 *.a
+*.out
 test*
 .vscode
+*.pdf
+coding-style-reports.log
 my_paint
