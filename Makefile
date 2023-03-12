@@ -41,6 +41,7 @@ $(NAME): $(OBJ)
 	@echo -n "\e[1;34mOK\e[0m"
 	@echo -n " ] "
 	@echo "\e[1;32mSuccessfully compiled all the files\e[0m"
+	make clean
 
 clean:
 	make clean -sC lib/my/

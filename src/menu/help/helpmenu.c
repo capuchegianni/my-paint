@@ -7,23 +7,17 @@
 
 #include "../../../include/header.h"
 
-void click_helpmenu(helpmenu_t *menu)
+void display_helpbuttons(buttonmenu_t *about, buttonmenu_t *help)
 {
-    if (sfMouse_isButtonPressed(sfMouseLeft)) {
-        if (menu->clicked == 0) {
-            menu->color = sfColor_fromRGB(169, 169, 169);
-            sfRectangleShape_setFillColor(menu->rect, menu->color);
-            menu->clicked = 1;
-        } else {
-            menu->color = sfColor_fromRGB(105, 105, 105);
-            sfRectangleShape_setFillColor(menu->rect, menu->color);
-            menu->clicked = 0;
-        }
-        sfSleep((sfTime){150000});
-    }
+    hover_aboutbutton(about);
+    sfRenderWindow_drawRectangleShape(window, about->rect, NULL);
+    sfRenderWindow_drawText(window, about->text, NULL);
+    hover_helpbutton(help);
+    sfRenderWindow_drawRectangleShape(window, help->rect, NULL);
+    sfRenderWindow_drawText(window, help->text, NULL);
 }
 
-void hover_helpmenu(helpmenu_t *menu, sfRenderWindow *window)
+void click_helpmenu(helpmenu_t *menu, buttonmenu_t *about, buttonmenu_t *help)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfVector2f menu_pos = sfRectangleShape_getPosition(menu->rect);
@@ -32,9 +26,34 @@ void hover_helpmenu(helpmenu_t *menu, sfRenderWindow *window)
     if (mouse_pos.x >= menu_pos.x && mouse_pos.x <= menu_pos.x + menu_size.x &&
         mouse_pos.y >= menu_pos.y && mouse_pos.y <= menu_pos.y + menu_size.y) {
         menu->hover = 1;
-        click_helpmenu(menu);
+        if (sfMouse_isButtonPressed(sfMouseLeft)) {
+            menu->pressed = 1;
+            menu->clicked = 1;
+            sfRectangleShape_setFillColor(menu->rect,
+            sfColor_fromRGB(169, 169, 169));
+        }
+        menu->pressed = 0;
     } else {
         menu->hover = 0;
+    }
+    if (menu->clicked == 1)
+        display_helpbuttons(about, help);
+}
+
+void hover_helpmenu(helpmenu_t *menu, buttonmenu_t *about, buttonmenu_t *help)
+{
+    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
+    sfVector2f menu_pos = sfRectangleShape_getPosition(menu->rect);
+    sfVector2f menu_size = sfRectangleShape_getSize(menu->rect);
+
+    click_helpmenu(menu, about, help);
+    if (mouse_pos.x < menu_pos.x || mouse_pos.x > menu_pos.x + menu_size.x ||
+    mouse_pos.y < menu_pos.y ||
+    mouse_pos.y > menu_pos.y + (menu_size.y * 3)) {
+        if (sfMouse_isButtonPressed(sfMouseLeft)) {
+            sfRectangleShape_setFillColor(menu->rect, menu->color);
+            menu->clicked = 0;
+        }
     }
 }
 
@@ -43,10 +62,10 @@ helpmenu_t *set_helpmenu(helpmenu_t *menu)
     sfRectangleShape_setPosition(menu->rect, menu->position);
     sfRectangleShape_setSize(menu->rect, menu->size);
     sfRectangleShape_setFillColor(menu->rect, menu->color);
-    sfRectangleShape_setOutlineThickness(menu->rect, 2);
+    sfRectangleShape_setOutlineThickness(menu->rect, 1);
     sfRectangleShape_setOutlineColor(menu->rect, sfBlack);
 
-    sfText_setString(menu->text, "Help");
+    sfText_setString(menu->text, "HELP");
     sfText_setColor(menu->text, menu->text_color);
     sfText_setFont(menu->text, menu->font);
     sfText_setCharacterSize(menu->text, menu->text_size);
