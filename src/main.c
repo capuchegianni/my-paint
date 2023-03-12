@@ -7,7 +7,9 @@
 
 #include "../include/header.h"
 
-int event_actions(sfRenderWindow *window)
+sfRenderWindow *window;
+
+int event_actions(void)
 {
     sfEvent event;
 
@@ -20,31 +22,59 @@ int event_actions(sfRenderWindow *window)
     return (0);
 }
 
-sfRenderWindow *init_window(void)
+void init_window(void)
 {
-    sfRenderWindow *window = sfRenderWindow_create((sfVideoMode)
+    window = sfRenderWindow_create((sfVideoMode)
     {1920, 1080, 32}, "my_paint", sfClose | sfResize, NULL);
 
     sfRenderWindow_setFramerateLimit(window, 60);
+}
 
-    return (window);
+void init_menu(global_filemenu_t **global_filemenu,
+global_editionmenu_t **global_editionmenu, global_helpmenu_t **global_helpmenu)
+{
+    global_filemenu_t *global_filemenu_cp = malloc(sizeof(global_filemenu_t));
+    global_filemenu_cp->filemenu = init_filemenu();
+    global_filemenu_cp->newfile = init_newfilebutton();
+    global_filemenu_cp->openfile = init_openfilebutton();
+    global_filemenu_cp->savefile = init_savefilebutton();
+    *global_filemenu = global_filemenu_cp;
+
+    global_editionmenu_t *global_editionmenu_cp =
+    malloc(sizeof(global_editionmenu_t));
+    global_editionmenu_cp->editionmenu = init_editionmenu();
+    global_editionmenu_cp->eraser = init_eraserbutton();
+    global_editionmenu_cp->pencil = init_pencilbutton();
+    *global_editionmenu = global_editionmenu_cp;
+
+    global_helpmenu_t *global_helpmenu_cp = malloc(sizeof(global_helpmenu_t));
+    global_helpmenu_cp->helpmenu = init_helpmenu();
+    global_helpmenu_cp->about = init_aboutbutton();
+    global_helpmenu_cp->help = init_helpbutton();
+    *global_helpmenu = global_helpmenu_cp;
 }
 
 void start_window(void)
 {
-    sfRenderWindow *window = init_window();
-    filemenu_t *filemenu = init_filemenu();
-    editionmenu_t *editionmenu = init_editionmenu();
-    helpmenu_t *helpmenu = init_helpmenu();
+    global_filemenu_t *global_filemenu = malloc(sizeof(global_filemenu_t));
+    global_editionmenu_t *global_editionmenu =
+    malloc(sizeof(global_editionmenu_t));
+    global_helpmenu_t *global_helpmenu = malloc(sizeof(global_helpmenu_t));
+    init_window();
+    init_menu(&global_filemenu, &global_editionmenu, &global_helpmenu);
 
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_clear(window, sfBlack);
-        hover_helpmenu(helpmenu, window);
-        hover_editionmenu(editionmenu, window);
-        hover_filemenu(filemenu, window);
-        display_menu(window, filemenu, editionmenu, helpmenu);
+        hover_filemenu(global_filemenu->filemenu, global_filemenu->newfile,
+        global_filemenu->openfile, global_filemenu->savefile);
+        hover_editionmenu(global_editionmenu->editionmenu,
+        global_editionmenu->pencil, global_editionmenu->eraser);
+        hover_helpmenu(global_helpmenu->helpmenu,
+        global_helpmenu->about, global_helpmenu->help);
+        display_menu(window, global_filemenu->filemenu,
+        global_editionmenu->editionmenu, global_helpmenu->helpmenu);
         sfRenderWindow_display(window);
-        event_actions(window);
+        event_actions();
     }
 }
 

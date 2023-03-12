@@ -7,23 +7,19 @@
 
 #include "../../../include/header.h"
 
-void click_editionmenu(editionmenu_t *menu)
+void display_editionbuttons(buttonmenu_t *pencilbutton,
+buttonmenu_t *eraserbutton)
 {
-    if (sfMouse_isButtonPressed(sfMouseLeft)) {
-        if (menu->clicked == 0) {
-            menu->color = sfColor_fromRGB(169, 169, 169);
-            sfRectangleShape_setFillColor(menu->rect, menu->color);
-            menu->clicked = 1;
-        } else {
-            menu->color = sfColor_fromRGB(105, 105, 105);
-            sfRectangleShape_setFillColor(menu->rect, menu->color);
-            menu->clicked = 0;
-        }
-        sfSleep((sfTime){150000});
-    }
+    hover_eraserbutton(eraserbutton);
+    sfRenderWindow_drawRectangleShape(window, eraserbutton->rect, NULL);
+    sfRenderWindow_drawText(window, eraserbutton->text, NULL);
+    hover_pencilbutton(pencilbutton);
+    sfRenderWindow_drawRectangleShape(window, pencilbutton->rect, NULL);
+    sfRenderWindow_drawText(window, pencilbutton->text, NULL);
 }
 
-void hover_editionmenu(editionmenu_t *menu, sfRenderWindow *window)
+void click_editionmenu(editionmenu_t *menu, buttonmenu_t *pencilbutton,
+buttonmenu_t *eraserbutton)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfVector2f menu_pos = sfRectangleShape_getPosition(menu->rect);
@@ -32,9 +28,35 @@ void hover_editionmenu(editionmenu_t *menu, sfRenderWindow *window)
     if (mouse_pos.x >= menu_pos.x && mouse_pos.x <= menu_pos.x + menu_size.x &&
         mouse_pos.y >= menu_pos.y && mouse_pos.y <= menu_pos.y + menu_size.y) {
         menu->hover = 1;
-        click_editionmenu(menu);
+        if (sfMouse_isButtonPressed(sfMouseLeft)) {
+            menu->pressed = 1;
+            menu->clicked = 1;
+            sfRectangleShape_setFillColor(menu->rect,
+            sfColor_fromRGB(169, 169, 169));
+        }
+        menu->pressed = 0;
     } else {
         menu->hover = 0;
+    }
+    if (menu->clicked == 1)
+        display_editionbuttons(pencilbutton, eraserbutton);
+}
+
+void hover_editionmenu(editionmenu_t *menu, buttonmenu_t *pencilbutton,
+buttonmenu_t *eraserbutton)
+{
+    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
+    sfVector2f menu_pos = sfRectangleShape_getPosition(menu->rect);
+    sfVector2f menu_size = sfRectangleShape_getSize(menu->rect);
+
+    click_editionmenu(menu, pencilbutton, eraserbutton);
+    if (mouse_pos.x < menu_pos.x || mouse_pos.x > menu_pos.x + menu_size.x ||
+    mouse_pos.y < menu_pos.y ||
+    mouse_pos.y > menu_pos.y + (menu_size.y * 3)) {
+        if (sfMouse_isButtonPressed(sfMouseLeft)) {
+            sfRectangleShape_setFillColor(menu->rect, menu->color);
+            menu->clicked = 0;
+        }
     }
 }
 
@@ -43,10 +65,10 @@ editionmenu_t *set_editionmenu(editionmenu_t *menu)
     sfRectangleShape_setPosition(menu->rect, menu->position);
     sfRectangleShape_setSize(menu->rect, menu->size);
     sfRectangleShape_setFillColor(menu->rect, menu->color);
-    sfRectangleShape_setOutlineThickness(menu->rect, 2);
+    sfRectangleShape_setOutlineThickness(menu->rect, 1);
     sfRectangleShape_setOutlineColor(menu->rect, sfBlack);
 
-    sfText_setString(menu->text, "Edition");
+    sfText_setString(menu->text, "EDITION");
     sfText_setColor(menu->text, menu->text_color);
     sfText_setFont(menu->text, menu->font);
     sfText_setCharacterSize(menu->text, menu->text_size);
@@ -67,7 +89,7 @@ editionmenu_t *init_editionmenu(void)
     menu->hover = 0;
     menu->text = sfText_create();
     menu->font = sfFont_createFromFile("assets/fonts/font.otf");
-    menu->text_pos = (sfVector2f){menu->position.x + 60, menu->position.y + 6};
+    menu->text_pos = (sfVector2f){menu->position.x + 50, menu->position.y + 6};
     menu->text_color = sfBlack;
     menu->text_size = 30;
 
