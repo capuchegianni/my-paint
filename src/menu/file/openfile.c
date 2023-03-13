@@ -19,7 +19,6 @@ void click_openfilebutton(buttonmenu_t *button)
     if (button->clicked == 1) {
 
     }
-    sfRectangleShape_setFillColor(button->rect, button->color);
     button->pressed = 0;
     button->clicked = 0;
 }
@@ -35,8 +34,11 @@ void hover_openfilebutton(buttonmenu_t *button)
     mouse_pos.y >= button_pos.y &&
     mouse_pos.y <= button_pos.y + button_size.y) {
         button->hover = 1;
+        sfRectangleShape_setFillColor(button->rect,
+        sfColor_fromRGB(128, 128, 128));
         click_openfilebutton(button);
     } else {
+        sfRectangleShape_setFillColor(button->rect, button->color);
         button->hover = 0;
     }
 }
