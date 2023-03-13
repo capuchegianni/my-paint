@@ -9,7 +9,7 @@
 
 sfRenderWindow *window;
 
-int event_actions(void)
+void event_actions(sfRenderWindow *window)
 {
     sfEvent event;
 
@@ -19,7 +19,6 @@ int event_actions(void)
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
             sfRenderWindow_close(window);
     }
-    return (0);
 }
 
 void init_window(void)
@@ -74,7 +73,7 @@ void start_window(void)
         display_menu(window, global_filemenu->filemenu,
         global_editionmenu->editionmenu, global_helpmenu->helpmenu);
         sfRenderWindow_display(window);
-        event_actions();
+        event_actions(window);
     }
 }
 

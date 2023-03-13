@@ -7,6 +7,23 @@
 
 #include "../../../include/header.h"
 
+void about_window(void)
+{
+    sfRenderWindow *about_window;
+    sfVideoMode mode = {500, 500, 32};
+    sfUint32 style = { sfClose };
+    char *name = "About";
+
+
+    about_window = sfRenderWindow_create(mode, name, style, NULL);
+    sfRenderWindow_setFramerateLimit(about_window, 60);
+    while (sfRenderWindow_isOpen(about_window)) {
+        sfRenderWindow_clear(about_window, sfBlack);
+        sfRenderWindow_display(about_window);
+        event_actions(about_window);
+    }
+}
+
 void click_aboutbutton(buttonmenu_t *button)
 {
     if (sfMouse_isButtonPressed(sfMouseLeft)) {
@@ -17,7 +34,7 @@ void click_aboutbutton(buttonmenu_t *button)
         return;
     }
     if (button->clicked == 1) {
-
+        about_window();
     }
     sfRectangleShape_setFillColor(button->rect, button->color);
     button->pressed = 0;
