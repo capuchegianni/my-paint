@@ -26,15 +26,16 @@ void click_helpmenu(helpmenu_t *menu, buttonmenu_t *about, buttonmenu_t *help)
     if (mouse_pos.x >= menu_pos.x && mouse_pos.x <= menu_pos.x + menu_size.x &&
         mouse_pos.y >= menu_pos.y && mouse_pos.y <= menu_pos.y + menu_size.y) {
         menu->hover = 1;
+        sfRectangleShape_setFillColor(menu->rect,sfColor_fromRGB(128,128,128));
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
             menu->pressed = 1;
             menu->clicked = 1;
             sfRectangleShape_setFillColor(menu->rect,
             sfColor_fromRGB(169, 169, 169));
-        }
-        menu->pressed = 0;
+        } menu->pressed = 0;
     } else {
         menu->hover = 0;
+        sfRectangleShape_setFillColor(menu->rect, menu->color);
     }
     if (menu->clicked == 1)
         display_helpbuttons(about, help);
