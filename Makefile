@@ -17,12 +17,14 @@ SRC = 	./src/main.c							\
 		./src/menu/help/helpmenu.c				\
 		./src/menu/help/about.c					\
 		./src/menu/help/help.c					\
+		./src/menu/help/help_text.c 			\
+		./src/menu/help/back_button.c			\
 
 OBJ = $(SRC:.c=.o)
 
 NAME = my_paint
 
-WARNING_FLAGS := -Wall -Wextra -W -g -g3 -ggdb -Wno-unused-parameter
+WARNING_FLAGS := -Wall -Wextra -W -g -g3 -ggdb
 
 CSFML_FLAGS := -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 

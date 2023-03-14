@@ -9,18 +9,6 @@
 
 sfRenderWindow *window;
 
-void event_actions(sfRenderWindow *window)
-{
-    sfEvent event;
-
-    while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed)
-            sfRenderWindow_close(window);
-        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
-            sfRenderWindow_close(window);
-    }
-}
-
 void init_window(void)
 {
     window = sfRenderWindow_create((sfVideoMode)
@@ -61,9 +49,9 @@ void start_window(void)
     global_helpmenu_t *global_helpmenu = malloc(sizeof(global_helpmenu_t));
     init_window();
     init_menu(&global_filemenu, &global_editionmenu, &global_helpmenu);
-
     while (sfRenderWindow_isOpen(window)) {
-        sfRenderWindow_clear(window, sfBlack);
+        sfRenderWindow_clear(window, sfWhite);
+        display_bar();
         hover_filemenu(global_filemenu->filemenu, global_filemenu->newfile,
         global_filemenu->openfile, global_filemenu->savefile);
         hover_editionmenu(global_editionmenu->editionmenu,
@@ -73,7 +61,7 @@ void start_window(void)
         display_menu(window, global_filemenu->filemenu,
         global_editionmenu->editionmenu, global_helpmenu->helpmenu);
         sfRenderWindow_display(window);
-        event_actions(window);
+        my_close_window(window);
     }
 }
 

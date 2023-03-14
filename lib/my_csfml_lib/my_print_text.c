@@ -9,24 +9,18 @@
 #include <stdlib.h>
 #include "my_csfml.h"
 
-int my_print_text(sfRenderWindow *window, int size)
+int my_print_text(sfRenderWindow *window, int size, sfVector2f pos, char *txt)
 {
     sfText *text = sfText_create();
-    sfFont *font = sfFont_createFromFile("assets/fonts/Aero-03.ttf");
-    char *str = "POUET POUET";
-    sfVector2u frame_size = sfRenderWindow_getSize(window);
-    int print_mid_x = frame_size.x / 2;
-    int print_mid_y = frame_size.y / 2;
-    sfVector2f pos = {print_mid_x, print_mid_y};
+    sfFont *font = sfFont_createFromFile("assets/fonts/other_font.ttf");
 
     if (text == NULL || font == NULL)
-        return 84;
-    sfRenderWindow_clear(window, sfBlack);
-    sfText_setString(text, str);
+        return 1;
+    sfText_setString(text, txt);
     sfText_setFont(text, font);
     sfText_setCharacterSize(text, size);
     sfText_setPosition(text, pos);
-    sfText_setColor(text, sfWhite);
+    sfText_setColor(text, sfBlack);
     sfRenderWindow_drawText(window, text, NULL);
     sfText_destroy(text);
     sfFont_destroy(font);

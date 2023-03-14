@@ -7,6 +7,30 @@
 
 #include "../../../include/header.h"
 
+void help_window(void)
+{
+    buttonmenu_t *back = init_back();
+
+    while (1) {
+        sfRectangleShape *rect = sfRectangleShape_create();
+        sfVector2f rect_size = {1920, 1080};
+        sfVector2f rect_pos = {0, 0};
+        sfRectangleShape_setSize(rect, rect_size);
+        sfRectangleShape_setPosition(rect, rect_pos);
+        sfRectangleShape_setFillColor(rect, sfColor_fromRGB(240, 240, 240));
+        sfRenderWindow_drawRectangleShape(window, rect, NULL);
+        display_bar();
+        base_prints();
+        sfRenderWindow_drawRectangleShape(window, back->rect, NULL);
+        sfRenderWindow_drawText(window, back->text, NULL);
+        sfRenderWindow_display(window);
+        if (hover_back(back) == 1)
+            return;
+        if (my_close_window(window) == 1)
+            return;
+    }
+}
+
 void click_helpbutton(buttonmenu_t *button)
 {
     if (sfMouse_isButtonPressed(sfMouseLeft)) {
@@ -17,7 +41,7 @@ void click_helpbutton(buttonmenu_t *button)
         return;
     }
     if (button->clicked == 1) {
-
+        help_window();
     }
     button->pressed = 0;
     button->clicked = 0;
@@ -35,7 +59,7 @@ void hover_helpbutton(buttonmenu_t *button)
     mouse_pos.y <= button_pos.y + button_size.y) {
         button->hover = 1;
         sfRectangleShape_setFillColor(button->rect,
-        sfColor_fromRGB(128, 128, 128));
+        sfColor_fromRGB(181, 181, 181));
         click_helpbutton(button);
     } else {
         sfRectangleShape_setFillColor(button->rect, button->color);
@@ -67,7 +91,7 @@ buttonmenu_t *init_helpbutton(void)
     button->rect = sfRectangleShape_create();
     button->position = (sfVector2f){400, 100};
     button->size = (sfVector2f){200, 50};
-    button->color = sfColor_fromRGB(105, 105, 105);
+    button->color = sfColor_fromRGB(194, 194, 194);
     button->clicked = 0;
     button->hover = 0;
     button->text = sfText_create();

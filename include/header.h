@@ -44,7 +44,10 @@
     void hover_aboutbutton(buttonmenu_t *button);
     buttonmenu_t *init_helpbutton(void);
     void hover_helpbutton(buttonmenu_t *button);
-    void event_actions(sfRenderWindow *window);
+    void display_bar(void);
+    void base_prints(void);
+    buttonmenu_t *init_back(void);
+    int hover_back(buttonmenu_t *back);
 
     extern sfRenderWindow *window;
 
