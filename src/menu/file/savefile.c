@@ -17,7 +17,10 @@ void click_savefilebutton(buttonmenu_t *button)
         return;
     }
     if (button->clicked == 1) {
-
+        sfSprite_setScale(area->sprite,
+        (sfVector2f){area->img_size.x / 1440, area->img_size.y / 810});
+        sfImage_saveToFile(area->image, area->save_path);
+        sfSprite_setScale(area->sprite, area->scale);
     }
     button->pressed = 0;
     button->clicked = 0;
