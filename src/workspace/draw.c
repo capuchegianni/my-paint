@@ -9,17 +9,19 @@
 
 void draw_three(sfVector2i mouse_pos, sfVector2f area_pos, unsigned y)
 {
-    for (unsigned i = 0, x = (mouse_pos.x - area_pos.x - 5) / area->scale.x ;
-    i <= 10 ; x++, i++) {
+    for (unsigned i = 0,
+    x = (mouse_pos.x - area_pos.x - tools->current_tool->size) / area->scale.x;
+    i <= (unsigned)(tools->current_tool->size * 2) ; x++, i++) {
         if (x < area->img_size.x)
-            sfImage_setPixel(area->image, x, y, sfBlack);
+            sfImage_setPixel(area->image, x, y, tools->current_tool->color);
     }
 }
 
 void draw_two(sfVector2i mouse_pos, sfVector2f area_pos)
 {
-    for (unsigned i = 0 , y = (mouse_pos.y - area_pos.y - 5) / area->scale.y ;
-    i <= 10 ; y++, i++) {
+    for (unsigned i = 0 ,
+    y = (mouse_pos.y - area_pos.y - tools->current_tool->size) / area->scale.y;
+    i <= (unsigned)(tools->current_tool->size * 2) ; y++, i++) {
         if (y < area->img_size.y) {
             draw_three(mouse_pos, area_pos, y);
         }

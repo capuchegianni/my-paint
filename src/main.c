@@ -9,6 +9,7 @@
 
 sfRenderWindow *window;
 draw_area_t *area;
+manage_tools_t *tools;
 
 void init_window(void)
 {
@@ -40,6 +41,22 @@ global_editionmenu_t **global_editionmenu, global_helpmenu_t **global_helpmenu)
     *global_helpmenu = global_helpmenu_cp;
 }
 
+void init_tools(void)
+{
+    tools = malloc(sizeof(manage_tools_t));
+
+    tools->pencil = malloc(sizeof(tool_t));
+    tools->pencil->size = 5;
+    tools->pencil->color = sfBlack;
+
+    tools->eraser = malloc(sizeof(tool_t));
+    tools->eraser->size = 5;
+    tools->eraser->color = sfWhite;
+
+    tools->current_tool = malloc(sizeof(tool_t));
+    tools->current_tool = tools->pencil;
+}
+
 int start_window(char **av)
 {
     global_filemenu_t *global_filemenu = malloc(sizeof(global_filemenu_t));
@@ -48,9 +65,9 @@ int start_window(char **av)
     global_helpmenu_t *global_helpmenu = malloc(sizeof(global_helpmenu_t));
 
     init_window();
+    init_area(av);
+    init_tools();
     init_menu(&global_filemenu, &global_editionmenu, &global_helpmenu);
-    if (init_area(av) == 84)
-        return (84);
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_clear(window, sfColor_fromRGB(245, 245, 245));
         display_bar();

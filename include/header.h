@@ -50,12 +50,13 @@
     void base_prints(void);
     buttonmenu_t *init_back(sfVector2f pos, sfVector2f size, int height);
     int hover_back(buttonmenu_t *back);
-    int init_area(char **av);
+    void init_area(char **av);
     void draw(void);
     void set_area(int i);
     void display_about(char *login1, char *login2, buttonmenu_t *back);
 
     extern sfRenderWindow *window;
     extern draw_area_t *area;
+    extern manage_tools_t *tools;
 
 #endif /* !HEADER_H_ */
