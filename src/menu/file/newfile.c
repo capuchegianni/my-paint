@@ -17,7 +17,7 @@ void click_newfilebutton(buttonmenu_t *button)
         return;
     }
     if (button->clicked == 1) {
-
+        set_area(1);
     }
     button->pressed = 0;
     button->clicked = 0;

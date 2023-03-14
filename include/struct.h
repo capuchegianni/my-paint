@@ -89,4 +89,14 @@
         buttonmenu_t *help;
     } global_helpmenu_t;
 
+    typedef struct draw_area {
+        sfImage *image;
+        sfVector2u img_size;
+        sfTexture *texture;
+        sfSprite *sprite;
+        sfVector2f pos;
+        sfVector2f scale;
+        char *save_path;
+    } draw_area_t;
+
 #endif /* !STRUCT_H_ */

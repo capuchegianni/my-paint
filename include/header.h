@@ -28,8 +28,10 @@
     editionmenu_t *init_editionmenu(void);
     filemenu_t *init_filemenu(void);
     helpmenu_t *init_helpmenu(void);
-    void display_menu(sfRenderWindow *window, filemenu_t *filemenu,
-    editionmenu_t *editionmenu, helpmenu_t *helpmenu);
+    void display_menu(sfRenderWindow *window,
+    global_filemenu_t *global_filemenu,
+    global_editionmenu_t *global_editionmenu,
+    global_helpmenu_t *global_helpmenu);
     buttonmenu_t *init_eraserbutton(void);
     void hover_eraserbutton(buttonmenu_t *button);
     buttonmenu_t *init_pencilbutton(void);
@@ -45,7 +47,11 @@
     buttonmenu_t *init_helpbutton(void);
     void hover_helpbutton(buttonmenu_t *button);
     void event_actions(sfRenderWindow *window);
+    int init_area(char **av);
+    void draw(void);
+    void set_area(int i);
 
     extern sfRenderWindow *window;
+    extern draw_area_t *area;
 
 #endif /* !HEADER_H_ */
