@@ -33,19 +33,19 @@
     global_editionmenu_t *global_editionmenu,
     global_helpmenu_t *global_helpmenu);
     buttonmenu_t *init_eraserbutton(void);
-    void hover_eraserbutton(buttonmenu_t *button);
+    int hover_eraserbutton(buttonmenu_t *button);
     buttonmenu_t *init_pencilbutton(void);
-    void hover_pencilbutton(buttonmenu_t *button);
+    int hover_pencilbutton(buttonmenu_t *button);
     buttonmenu_t *init_newfilebutton(void);
-    void hover_newfilebutton(buttonmenu_t *button);
+    int hover_newfilebutton(buttonmenu_t *button);
     buttonmenu_t *init_openfilebutton(void);
-    void hover_openfilebutton(buttonmenu_t *button);
+    int hover_openfilebutton(buttonmenu_t *button);
     buttonmenu_t *init_savefilebutton(void);
-    void hover_savefilebutton(buttonmenu_t *button);
+    int hover_savefilebutton(buttonmenu_t *button);
     buttonmenu_t *init_aboutbutton(void);
-    void hover_aboutbutton(buttonmenu_t *button);
+    int hover_aboutbutton(buttonmenu_t *button);
     buttonmenu_t *init_helpbutton(void);
-    void hover_helpbutton(buttonmenu_t *button);
+    int hover_helpbutton(buttonmenu_t *button);
     void display_bar(void);
     void base_prints(void);
     buttonmenu_t *init_back(sfVector2f pos, sfVector2f size, int height);

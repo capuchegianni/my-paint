@@ -7,23 +7,24 @@
 
 #include "../../../include/header.h"
 
-void click_pencilbutton(buttonmenu_t *button)
+int click_pencilbutton(buttonmenu_t *button)
 {
     if (sfMouse_isButtonPressed(sfMouseLeft)) {
         button->pressed = 1;
         button->clicked = 1;
         sfRectangleShape_setFillColor(button->rect,
         sfColor_fromRGB(169, 169, 169));
-        return;
+        return (0);
     }
     if (button->clicked == 1) {
-
+        button->pressed = 0;
+        button->clicked = 0;
+        return (1);
     }
-    button->pressed = 0;
-    button->clicked = 0;
+    return (0);
 }
 
-void hover_pencilbutton(buttonmenu_t *button)
+int hover_pencilbutton(buttonmenu_t *button)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfVector2f button_pos = sfRectangleShape_getPosition(button->rect);
@@ -36,10 +37,11 @@ void hover_pencilbutton(buttonmenu_t *button)
         button->hover = 1;
         sfRectangleShape_setFillColor(button->rect,
         sfColor_fromRGB(181, 181, 181));
-        click_pencilbutton(button);
+        return (click_pencilbutton(button));
     } else {
         sfRectangleShape_setFillColor(button->rect, button->color);
         button->hover = 0;
+        return (0);
     }
 }
 

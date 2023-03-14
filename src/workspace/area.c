@@ -27,10 +27,6 @@ int init_area(char **av)
 {
     area = malloc(sizeof(draw_area_t));
     if (av[1] != NULL) {
-        if (open(av[1], O_RDONLY) == -1) {
-            my_printerr("Error: File not found.\n");
-            return (84);
-        }
         area->image = sfImage_createFromFile(av[1]);
         area->save_path = av[1];
     } else {
