@@ -17,6 +17,8 @@ SRC = 	./src/main.c							\
 		./src/menu/help/helpmenu.c				\
 		./src/menu/help/about.c					\
 		./src/menu/help/help.c					\
+		./src/menu/help/help_text.c 			\
+		./src/menu/help/back_button.c			\
 		./src/workspace/area.c					\
 		./src/workspace/draw.c					\
 

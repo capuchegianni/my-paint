@@ -31,7 +31,7 @@ buttonmenu_t *openfile, buttonmenu_t *savefile)
     if (mouse_pos.x >= menu_pos.x && mouse_pos.x <= menu_pos.x + menu_size.x &&
         mouse_pos.y >= menu_pos.y && mouse_pos.y <= menu_pos.y + menu_size.y) {
         menu->hover = 1;
-        sfRectangleShape_setFillColor(menu->rect,sfColor_fromRGB(128,128,128));
+        sfRectangleShape_setFillColor(menu->rect,sfColor_fromRGB(181,181,181));
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
             menu->pressed = 1;
             menu->clicked = 1;
@@ -88,7 +88,7 @@ filemenu_t *init_filemenu(void)
     menu->rect = sfRectangleShape_create();
     menu->position = (sfVector2f){0, 0};
     menu->size = (sfVector2f){200, 50};
-    menu->color = sfColor_fromRGB(105, 105, 105);
+    menu->color = sfColor_fromRGB(194, 194, 194);
     menu->clicked = 0;
     menu->hover = 0;
     menu->text = sfText_create();

@@ -10,18 +10,6 @@
 sfRenderWindow *window;
 draw_area_t *area;
 
-void event_actions(sfRenderWindow *window)
-{
-    sfEvent event;
-
-    while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed)
-            sfRenderWindow_close(window);
-        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
-            sfRenderWindow_close(window);
-    }
-}
-
 void init_window(void)
 {
     window = sfRenderWindow_create((sfVideoMode)
@@ -58,19 +46,20 @@ int start_window(char **av)
     global_editionmenu_t *global_editionmenu =
     malloc(sizeof(global_editionmenu_t));
     global_helpmenu_t *global_helpmenu = malloc(sizeof(global_helpmenu_t));
+
     init_window();
     init_menu(&global_filemenu, &global_editionmenu, &global_helpmenu);
     if (init_area(av) == 84)
         return (84);
-
     while (sfRenderWindow_isOpen(window)) {
-        sfRenderWindow_clear(window, sfBlack);
+        sfRenderWindow_clear(window, sfWhite);
         display_menu(window, global_filemenu, global_editionmenu,
         global_helpmenu);
+        display_bar();
         sfRenderWindow_drawSprite(window, area->sprite, NULL);
         draw();
         sfRenderWindow_display(window);
-        event_actions(window);
+        my_close_window(window);
     }
     return (0);
 }

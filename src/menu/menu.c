@@ -28,3 +28,17 @@ global_editionmenu_t *global_editionmenu, global_helpmenu_t *global_helpmenu)
     global_editionmenu->editionmenu->text, NULL);
     sfRenderWindow_drawText(window, global_helpmenu->helpmenu->text, NULL);
 }
+
+void display_bar(void)
+{
+    sfRectangleShape *rect = sfRectangleShape_create();
+    sfVector2f rect_size = {1920, 50};
+    sfVector2f rect_pos = {0, 0};
+
+    sfRectangleShape_setSize(rect, rect_size);
+    sfRectangleShape_setPosition(rect, rect_pos);
+    sfRectangleShape_setFillColor(rect, sfColor_fromRGB(194, 194, 194));
+    sfRectangleShape_setOutlineThickness(rect, 1);
+    sfRectangleShape_setOutlineColor(rect, sfBlack);
+    sfRenderWindow_drawRectangleShape(window, rect, NULL);
+}

@@ -9,18 +9,25 @@
 
 void about_window(void)
 {
-    sfRenderWindow *about_window;
-    sfVideoMode mode = {500, 500, 32};
-    sfUint32 style = { sfClose };
-    char *name = "About";
-
-
-    about_window = sfRenderWindow_create(mode, name, style, NULL);
-    sfRenderWindow_setFramerateLimit(about_window, 60);
-    while (sfRenderWindow_isOpen(about_window)) {
-        sfRenderWindow_clear(about_window, sfBlack);
-        sfRenderWindow_display(about_window);
-        event_actions(about_window);
+    char *login1 = "Elouan : elouan.rigomont@epitech.eu";
+    char *login2 = "Gianni : gianni.henriques@epitech.eu";
+    while (1) {
+        sfRectangleShape *rect = sfRectangleShape_create();
+        sfVector2f rect_size = {1920, 100};
+        sfVector2f rect_pos = {0, 0};
+        sfRectangleShape_setSize(rect, rect_size);
+        sfRectangleShape_setPosition(rect, rect_pos);
+        sfRectangleShape_setFillColor(rect, sfColor_fromRGB(240, 240, 240));
+        sfRectangleShape_setOutlineThickness(rect, 1);
+        sfRectangleShape_setOutlineColor(rect, sfBlack);
+        sfRenderWindow_drawRectangleShape(window, rect, NULL);
+        my_print_text(window, 30, (sfVector2f){30, 10}, login1);
+        my_print_text(window, 30, (sfVector2f){30, 50}, login2);
+        sfRenderWindow_display(window);
+        if (sfMouse_isButtonPressed(sfMouseLeft))
+            return;
+        if (my_close_window(window) == 1)
+            return;
     }
 }
 
@@ -37,7 +44,6 @@ void click_aboutbutton(buttonmenu_t *button)
         about_window();
     }
     button->pressed = 0;
-    button->clicked = 0;
 }
 
 void hover_aboutbutton(buttonmenu_t *button)
@@ -52,11 +58,12 @@ void hover_aboutbutton(buttonmenu_t *button)
     mouse_pos.y <= button_pos.y + button_size.y) {
         button->hover = 1;
         sfRectangleShape_setFillColor(button->rect,
-        sfColor_fromRGB(128, 128, 128));
+        sfColor_fromRGB(181, 181, 181));
         click_aboutbutton(button);
     } else {
         sfRectangleShape_setFillColor(button->rect, button->color);
         button->hover = 0;
+        button->clicked = 0;
     }
 }
 
@@ -84,7 +91,7 @@ buttonmenu_t *init_aboutbutton(void)
     button->rect = sfRectangleShape_create();
     button->position = (sfVector2f){400, 50};
     button->size = (sfVector2f){200, 50};
-    button->color = sfColor_fromRGB(105, 105, 105);
+    button->color = sfColor_fromRGB(194, 194, 194);
     button->clicked = 0;
     button->hover = 0;
     button->text = sfText_create();

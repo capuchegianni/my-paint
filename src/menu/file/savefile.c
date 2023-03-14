@@ -38,7 +38,7 @@ void hover_savefilebutton(buttonmenu_t *button)
     mouse_pos.y <= button_pos.y + button_size.y) {
         button->hover = 1;
         sfRectangleShape_setFillColor(button->rect,
-        sfColor_fromRGB(128, 128, 128));
+        sfColor_fromRGB(181, 181, 181));
         click_savefilebutton(button);
     } else {
         sfRectangleShape_setFillColor(button->rect, button->color);
@@ -69,8 +69,8 @@ buttonmenu_t *init_savefilebutton(void)
 
     button->rect = sfRectangleShape_create();
     button->position = (sfVector2f){0, 150};
-    button->size = (sfVector2f){200, 50};
-    button->color = sfColor_fromRGB(105, 105, 105);
+    button->size = (sfVector2f){199, 50};
+    button->color = sfColor_fromRGB(194, 194, 194);
     button->clicked = 0;
     button->hover = 0;
     button->text = sfText_create();

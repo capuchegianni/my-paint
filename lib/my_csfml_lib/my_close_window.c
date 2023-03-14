@@ -12,13 +12,15 @@ int my_close_window(sfRenderWindow *window)
 {
     sfEvent event;
 
-    if (sfRenderWindow_pollEvent(window, &event)
-    && event.type == sfEvtClosed) {
-        sfRenderWindow_close(window);
-        return 1;
-    } else if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
-        sfRenderWindow_close(window);
-        return 1;
+    while (sfRenderWindow_pollEvent(window, &event)) {
+        if (event.type == sfEvtClosed){
+            sfRenderWindow_close(window);
+            return 1;
+        }
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape) {
+            sfRenderWindow_close(window);
+            return 1;
+        }
     }
     return 0;
 }
