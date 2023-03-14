@@ -17,6 +17,7 @@ int click_eraserbutton(buttonmenu_t *button)
         return (0);
     }
     if (button->clicked == 1) {
+        tools->current_tool = tools->eraser;
         button->pressed = 0;
         button->clicked = 0;
         return (1);

@@ -99,4 +99,16 @@
         char *save_path;
     } draw_area_t;
 
+    typedef struct tool {
+        int size;
+        int shape;
+        sfColor color;
+    } tool_t;
+
+    typedef struct manage_tools {
+        tool_t *pencil;
+        tool_t *eraser;
+        tool_t *current_tool;
+    } manage_tools_t;
+
 #endif /* !STRUCT_H_ */

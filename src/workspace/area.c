@@ -23,7 +23,7 @@ void set_area(int i)
     sfSprite_setScale(area->sprite, area->scale);
 }
 
-int init_area(char **av)
+void init_area(char **av)
 {
     area = malloc(sizeof(draw_area_t));
     if (av[1] != NULL) {
@@ -34,5 +34,4 @@ int init_area(char **av)
         area->save_path = "image.jpg";
     }
     set_area(0);
-    return (0);
 }
