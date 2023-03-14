@@ -69,5 +69,10 @@ int main(int ac, char **av)
     if (ac != 1 && !av[0])
         return (84);
 
+    if (av[1] && open(av[1], O_RDONLY) == -1) {
+        my_printerr("Error: File not found.\n");
+        return (84);
+    }
+
     return (start_window(av));
 }

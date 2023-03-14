@@ -8,12 +8,18 @@
 #include "../../../include/header.h"
 
 void display_editionbuttons(buttonmenu_t *pencilbutton,
-buttonmenu_t *eraserbutton)
+buttonmenu_t *eraserbutton, editionmenu_t *menu)
 {
-    hover_eraserbutton(eraserbutton);
+    if (hover_eraserbutton(eraserbutton) == 1) {
+        sfRectangleShape_setFillColor(menu->rect, menu->color);
+        menu->clicked = 0;
+    }
     sfRenderWindow_drawRectangleShape(window, eraserbutton->rect, NULL);
     sfRenderWindow_drawText(window, eraserbutton->text, NULL);
-    hover_pencilbutton(pencilbutton);
+    if (hover_pencilbutton(pencilbutton) == 1) {
+        sfRectangleShape_setFillColor(menu->rect, menu->color);
+        menu->clicked = 0;
+    }
     sfRenderWindow_drawRectangleShape(window, pencilbutton->rect, NULL);
     sfRenderWindow_drawText(window, pencilbutton->text, NULL);
 }
@@ -40,7 +46,7 @@ buttonmenu_t *eraserbutton)
         menu->hover = 0;
     }
     if (menu->clicked == 1)
-        display_editionbuttons(pencilbutton, eraserbutton);
+        display_editionbuttons(pencilbutton, eraserbutton, menu);
 }
 
 void hover_editionmenu(editionmenu_t *menu, buttonmenu_t *pencilbutton,

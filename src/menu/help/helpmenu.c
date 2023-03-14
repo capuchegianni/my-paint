@@ -7,12 +7,19 @@
 
 #include "../../../include/header.h"
 
-void display_helpbuttons(buttonmenu_t *about, buttonmenu_t *help)
+void display_helpbuttons(buttonmenu_t *about, buttonmenu_t *help,
+helpmenu_t *menu)
 {
-    hover_aboutbutton(about);
+    if (hover_aboutbutton(about) == 1) {
+        sfRectangleShape_setFillColor(menu->rect, menu->color);
+        menu->clicked = 0;
+    }
     sfRenderWindow_drawRectangleShape(window, about->rect, NULL);
     sfRenderWindow_drawText(window, about->text, NULL);
-    hover_helpbutton(help);
+    if (hover_helpbutton(help) == 1 ) {
+        sfRectangleShape_setFillColor(menu->rect, menu->color);
+        menu->clicked = 0;
+    }
     sfRenderWindow_drawRectangleShape(window, help->rect, NULL);
     sfRenderWindow_drawText(window, help->text, NULL);
 }
@@ -38,7 +45,7 @@ void click_helpmenu(helpmenu_t *menu, buttonmenu_t *about, buttonmenu_t *help)
         sfRectangleShape_setFillColor(menu->rect, menu->color);
     }
     if (menu->clicked == 1)
-        display_helpbuttons(about, help);
+        display_helpbuttons(about, help, menu);
 }
 
 void hover_helpmenu(helpmenu_t *menu, buttonmenu_t *about, buttonmenu_t *help)

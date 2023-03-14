@@ -8,15 +8,24 @@
 #include "../../../include/header.h"
 
 void display_filebuttons(buttonmenu_t *newfile, buttonmenu_t *openfile,
-buttonmenu_t *savefile)
+buttonmenu_t *savefile, filemenu_t *menu)
 {
-    hover_newfilebutton(newfile);
+    if (hover_newfilebutton(newfile) == 1){
+        sfRectangleShape_setFillColor(menu->rect, menu->color);
+        menu->clicked = 0;
+    }
     sfRenderWindow_drawRectangleShape(window, newfile->rect, NULL);
     sfRenderWindow_drawText(window, newfile->text, NULL);
-    hover_openfilebutton(openfile);
+    if (hover_openfilebutton(openfile) == 1) {
+        sfRectangleShape_setFillColor(menu->rect, menu->color);
+        menu->clicked = 0;
+    }
     sfRenderWindow_drawRectangleShape(window, openfile->rect, NULL);
     sfRenderWindow_drawText(window, openfile->text, NULL);
-    hover_savefilebutton(savefile);
+    if (hover_savefilebutton(savefile) == 1) {
+        sfRectangleShape_setFillColor(menu->rect, menu->color);
+        menu->clicked = 0;
+    }
     sfRenderWindow_drawRectangleShape(window, savefile->rect, NULL);
     sfRenderWindow_drawText(window, savefile->text, NULL);
 }
@@ -43,7 +52,7 @@ buttonmenu_t *openfile, buttonmenu_t *savefile)
         menu->hover = 0;
     }
     if (menu->clicked == 1)
-        display_filebuttons(newfile, openfile, savefile);
+        display_filebuttons(newfile, openfile, savefile, menu);
 }
 
 void hover_filemenu(filemenu_t *menu, buttonmenu_t *newfile,
