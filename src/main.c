@@ -53,9 +53,9 @@ int start_window(char **av)
         return (84);
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_clear(window, sfWhite);
+        display_bar();
         display_menu(window, global_filemenu, global_editionmenu,
         global_helpmenu);
-        display_bar();
         sfRenderWindow_drawSprite(window, area->sprite, NULL);
         draw();
         sfRenderWindow_display(window);

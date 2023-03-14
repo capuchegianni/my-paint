@@ -16,7 +16,6 @@ void set_area(int i)
     area->sprite = sfSprite_create();
     area->pos = (sfVector2f){400, 200};
     sfVector2f size = (sfVector2f){area->img_size.x, area->img_size.y};
-    // area->scale = (sfVector2f){1, 1};
     area->scale = (sfVector2f){1440 / size.x, 810 / size.y};
     sfSprite_setPosition(area->sprite, area->pos);
     sfTexture_updateFromImage(area->texture, area->image, 0, 0);
