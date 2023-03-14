@@ -9,7 +9,8 @@
 
 void help_window(void)
 {
-    buttonmenu_t *back = init_back();
+    buttonmenu_t *back = init_back((sfVector2f){1720, 0},
+    (sfVector2f){200, 50}, 6);
 
     while (1) {
         sfRectangleShape *rect = sfRectangleShape_create();
@@ -19,8 +20,7 @@ void help_window(void)
         sfRectangleShape_setPosition(rect, rect_pos);
         sfRectangleShape_setFillColor(rect, sfColor_fromRGB(240, 240, 240));
         sfRenderWindow_drawRectangleShape(window, rect, NULL);
-        display_bar();
-        base_prints();
+        display_bar(); base_prints();
         sfRenderWindow_drawRectangleShape(window, back->rect, NULL);
         sfRenderWindow_drawText(window, back->text, NULL);
         sfRenderWindow_display(window);

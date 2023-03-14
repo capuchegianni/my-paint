@@ -21,6 +21,7 @@ SRC = 	./src/main.c							\
 		./src/menu/help/back_button.c			\
 		./src/workspace/area.c					\
 		./src/workspace/draw.c					\
+		./src/menu/help/display_about.c 		\
 
 OBJ = $(SRC:.c=.o)
 

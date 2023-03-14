@@ -52,7 +52,7 @@ int start_window(char **av)
     if (init_area(av) == 84)
         return (84);
     while (sfRenderWindow_isOpen(window)) {
-        sfRenderWindow_clear(window, sfWhite);
+        sfRenderWindow_clear(window, sfColor_fromRGB(245, 245, 245));
         display_bar();
         display_menu(window, global_filemenu, global_editionmenu,
         global_helpmenu);
