@@ -60,20 +60,20 @@ buttonmenu_t *set_back(buttonmenu_t *back)
     return back;
 }
 
-buttonmenu_t *init_back(void)
+buttonmenu_t *init_back(sfVector2f pos, sfVector2f size, int height)
 {
     buttonmenu_t *back = malloc(sizeof(buttonmenu_t));
 
     back->rect = sfRectangleShape_create();
-    back->position = (sfVector2f){1720, 0};
-    back->size = (sfVector2f){200, 50};
+    back->position = pos;
+    back->size = size;
     back->color = sfColor_fromRGB(194, 194, 194);
     back->clicked = 0;
     back->hover = 0;
     back->text = sfText_create();
     back->font = sfFont_createFromFile("assets/fonts/font.otf");
     back->text_pos = (sfVector2f){back->position.x + 75,
-    back->position.y + 6};
+    back->position.y + height};
     back->text_color = sfBlack;
     back->text_size = 30;
 
