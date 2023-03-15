@@ -5,34 +5,27 @@
 ## Makefile to compile the project
 ##
 
-SRC = 	./src/main.c								\
-		./src/menu/menu.c							\
-		./src/menu/edition/editionmenu.c			\
-		./src/menu/edition/eraser.c					\
-		./src/menu/edition/pencil.c					\
-		./src/menu/file/filemenu.c					\
-		./src/menu/file/newfile.c					\
-		./src/menu/file/openfile.c					\
-		./src/menu/file/savefile.c					\
-		./src/menu/help/helpmenu.c					\
-		./src/menu/help/about.c						\
-		./src/menu/help/help.c						\
-		./src/menu/help/help_text.c 				\
-		./src/menu/help/back_button.c				\
-		./src/menu/help/display_about.c 			\
-		./src/workspace/area.c						\
-		./src/workspace/draw.c						\
-		./src/tool_bar/bar.c						\
-		./src/tool_bar/pencil_size/pencil_size.c	\
-		./src/tool_bar/pencil_size/pencil_less.c	\
-		./src/tool_bar/pencil_size/pencil_more.c	\
-		./src/tool_bar/eraser_size/eraser_size.c	\
-		./src/tool_bar/eraser_size/eraser_less.c	\
-		./src/tool_bar/eraser_size/eraser_more.c	\
-
-OBJ = $(SRC:.c=.o)
-
 NAME = my_paint
+
+SRC := 	./src/main.c							\
+		./src/menu/menu.c						\
+		./src/menu/edition/editionmenu.c		\
+		./src/menu/edition/eraser.c				\
+		./src/menu/edition/pencil.c				\
+		./src/menu/file/filemenu.c				\
+		./src/menu/file/newfile.c				\
+		./src/menu/file/openfile.c				\
+		./src/menu/file/savefile.c				\
+		./src/menu/help/helpmenu.c				\
+		./src/menu/help/about.c					\
+		./src/menu/help/help.c					\
+		./src/menu/help/help_text.c 			\
+		./src/menu/help/back_button.c			\
+		./src/workspace/area.c					\
+		./src/workspace/draw.c					\
+		./src/menu/help/display_about.c 		\
+
+OBJ := $(SRC:.c=.o)
 
 WARNING_FLAGS := -Wall -Wextra -W -g -g3 -ggdb
 
@@ -53,7 +46,6 @@ $(NAME): $(OBJ)
 	@echo -n "\e[1;34mOK\e[0m"
 	@echo -n " ] "
 	@echo "\e[1;32mSuccessfully compiled all the files\e[0m"
-	make clean
 
 clean:
 	make clean -sC lib/my/
