@@ -27,11 +27,12 @@ helpmenu_t *menu)
 void click_helpmenu(helpmenu_t *menu, buttonmenu_t *about, buttonmenu_t *help)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
-    sfVector2f menu_pos = sfRectangleShape_getPosition(menu->rect);
-    sfVector2f menu_size = sfRectangleShape_getSize(menu->rect);
-
-    if (mouse_pos.x >= menu_pos.x && mouse_pos.x <= menu_pos.x + menu_size.x &&
-        mouse_pos.y >= menu_pos.y && mouse_pos.y <= menu_pos.y + menu_size.y) {
+    sfVector2u window_size = sfRenderWindow_getSize(window);
+    sfFloatRect menu_size = sfRectangleShape_getGlobalBounds(menu->rect);
+    double x_ratio = (double)window_size.x / 1920;
+    double y_ratio = (double)window_size.y / 1016;
+    if (sfFloatRect_contains(&menu_size, (mouse_pos.x / x_ratio),
+    (mouse_pos.y / y_ratio)) == sfTrue) {
         menu->hover = 1;
         sfRectangleShape_setFillColor(menu->rect,sfColor_fromRGB(181,181,181));
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
@@ -43,8 +44,7 @@ void click_helpmenu(helpmenu_t *menu, buttonmenu_t *about, buttonmenu_t *help)
     } else {
         menu->hover = 0;
         sfRectangleShape_setFillColor(menu->rect, menu->color);
-    }
-    if (menu->clicked == 1)
+    } if (menu->clicked == 1)
         display_helpbuttons(about, help, menu);
 }
 
@@ -52,12 +52,16 @@ void hover_helpmenu(helpmenu_t *menu, buttonmenu_t *about, buttonmenu_t *help)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfVector2f menu_pos = sfRectangleShape_getPosition(menu->rect);
+    sfVector2u window_size = sfRenderWindow_getSize(window);
     sfVector2f menu_size = sfRectangleShape_getSize(menu->rect);
+    double x_ratio = (double)window_size.x / 1920;
+    double y_ratio = (double)window_size.y / 1016;
 
     click_helpmenu(menu, about, help);
-    if (mouse_pos.x < menu_pos.x || mouse_pos.x > menu_pos.x + menu_size.x ||
-    mouse_pos.y < menu_pos.y ||
-    mouse_pos.y > menu_pos.y + (menu_size.y * 3)) {
+    if ((mouse_pos.x / x_ratio) < menu_pos.x ||
+    (mouse_pos.x / x_ratio) > menu_pos.x + menu_size.x ||
+    (mouse_pos.y / y_ratio) < menu_pos.y ||
+    (mouse_pos.y / y_ratio) > menu_pos.y + (menu_size.y * 3)) {
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
             sfRectangleShape_setFillColor(menu->rect, menu->color);
             menu->clicked = 0;

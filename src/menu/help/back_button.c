@@ -27,11 +27,13 @@ int click_back(buttonmenu_t *button)
 int hover_back(buttonmenu_t *back)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
-    sfVector2f back_pos = sfRectangleShape_getPosition(back->rect);
-    sfVector2f back_size = sfRectangleShape_getSize(back->rect);
+    sfVector2u window_size = sfRenderWindow_getSize(window);
+    sfFloatRect button_size = sfRectangleShape_getGlobalBounds(back->rect);
+    double x_ratio = (double)window_size.x / 1920;
+    double y_ratio = (double)window_size.y / 1016;
 
-    if (mouse_pos.x >= back_pos.x && mouse_pos.x <= back_pos.x + back_size.x &&
-        mouse_pos.y >= back_pos.y && mouse_pos.y <= back_pos.y + back_size.y) {
+    if (sfFloatRect_contains(&button_size, (mouse_pos.x / x_ratio),
+    (mouse_pos.y / y_ratio)) == sfTrue) {
         back->hover = 1;
         sfRectangleShape_setFillColor(back->rect,
         sfColor_fromRGB(181, 181, 181));

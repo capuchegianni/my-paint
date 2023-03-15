@@ -17,6 +17,8 @@ void add_heart(void)
     sfSprite_setTexture(heart_sprite, love, sfTrue);
     sfSprite_setPosition(heart_sprite, heart_pos);
     sfRenderWindow_drawSprite(window, heart_sprite, NULL);
+    sfSprite_destroy(heart_sprite);
+    sfTexture_destroy(love);
 }
 
 void base_prints(void)
