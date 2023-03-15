@@ -31,6 +31,7 @@ SRC := 	./src/main.c								\
 		./src/tool_bar/pencil_size/pencil_less.c	\
 		./src/tool_bar/pencil_size/pencil_more.c	\
 		./src/tool_bar/pencil_size/pencil_size.c	\
+		./src/tool_bar/colors/rectangle_color.c 	\
 
 OBJ := $(SRC:.c=.o)
 

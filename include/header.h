@@ -63,6 +63,7 @@
     tool_bar_t *eraser_size(tool_bar_t *bar);
     void hover_eraserless(tool_bar_t *bar);
     void hover_erasermore(tool_bar_t *bar);
+    void display_colors(void);
 
     extern sfRenderWindow *window;
     extern draw_area_t *area;
