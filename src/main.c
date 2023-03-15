@@ -11,12 +11,6 @@ sfRenderWindow *window;
 draw_area_t *area;
 manage_tools_t *tools;
 
-void init_window(void)
-{
-    window = sfRenderWindow_create((sfVideoMode)
-    {1920, 1080, 32}, "my_paint", sfClose | sfResize, NULL);
-}
-
 void init_menu(global_filemenu_t **global_filemenu,
 global_editionmenu_t **global_editionmenu, global_helpmenu_t **global_helpmenu)
 {
@@ -57,24 +51,35 @@ void init_tools(void)
     tools->current_tool = tools->pencil;
 }
 
+void init(char **av, global_filemenu_t **global_filemenu,
+global_editionmenu_t **global_editionmenu, global_helpmenu_t **global_helpmenu)
+{
+    window = sfRenderWindow_create((sfVideoMode)
+    {1920, 1080, 32}, "my_paint", sfClose | sfResize, NULL);
+
+    init_area(av);
+    init_tools();
+    init_menu(global_filemenu, global_editionmenu, global_helpmenu);
+}
+
 int start_window(char **av)
 {
     global_filemenu_t *global_filemenu = malloc(sizeof(global_filemenu_t));
     global_editionmenu_t *global_editionmenu =
     malloc(sizeof(global_editionmenu_t));
     global_helpmenu_t *global_helpmenu = malloc(sizeof(global_helpmenu_t));
+    init(av, &global_filemenu, &global_editionmenu, &global_helpmenu);
+    tool_bar_t *tbar = tool_bar();
 
-    init_window();
-    init_area(av);
-    init_tools();
-    init_menu(&global_filemenu, &global_editionmenu, &global_helpmenu);
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_clear(window, sfColor_fromRGB(245, 245, 245));
         display_bar();
         display_menu(window, global_filemenu, global_editionmenu,
         global_helpmenu);
+        outline_area();
         sfRenderWindow_drawSprite(window, area->sprite, NULL);
         draw();
+        display_toolbar(tbar);
         sfRenderWindow_display(window);
         my_close_window(window);
     }

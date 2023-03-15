@@ -59,5 +59,6 @@
     int my_tablen(char **tab);
     char *my_tostr(int nb);
     char **my_wordarray(char *str, int letter);
+    char *my_nbrstr(int nb);
 
 #endif /* MY_H_ */

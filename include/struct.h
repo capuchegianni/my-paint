@@ -111,4 +111,47 @@
         tool_t *current_tool;
     } manage_tools_t;
 
+    typedef struct less {
+        sfRectangleShape *rect;
+        sfVector2f pos;
+        sfVector2f size;
+        sfColor color;
+        sfText *text;
+        int clicked;
+    } less_t;
+
+    typedef struct more {
+        sfRectangleShape *rect;
+        sfVector2f pos;
+        sfVector2f size;
+        sfColor color;
+        sfText *text;
+        int clicked;
+    } more_t;
+
+    typedef struct pencil_size {
+        sfText *text;
+        sfText *tnbr;
+        int nbr;
+        less_t *less;
+        more_t *more;
+    } pencil_size_t;
+
+    typedef struct eraser_size {
+        sfText *text;
+        sfText *tnbr;
+        int nbr;
+        less_t *less;
+        more_t *more;
+    } eraser_size_t;
+
+    typedef struct tool_bar {
+        sfRectangleShape *rect;
+        sfVector2f pos;
+        sfVector2f size;
+        sfColor color;
+        pencil_size_t *pencil_size;
+        eraser_size_t *eraser_size;
+    } tool_bar_t;
+
 #endif /* !STRUCT_H_ */

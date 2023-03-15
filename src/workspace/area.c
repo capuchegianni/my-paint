@@ -7,6 +7,20 @@
 
 #include "../../include/header.h"
 
+void outline_area(void)
+{
+    sfRectangleShape *img_outline = sfRectangleShape_create();
+    sfVector2f img_outline_size = {1440, 810};
+    sfVector2f img_outline_pos = {400, 200};
+
+    sfRectangleShape_setSize(img_outline, img_outline_size);
+    sfRectangleShape_setPosition(img_outline, img_outline_pos);
+    sfRectangleShape_setOutlineThickness(img_outline, 2);
+    sfRectangleShape_setOutlineColor(img_outline, sfBlack);
+    sfRenderWindow_drawRectangleShape(window, img_outline, NULL);
+    sfRectangleShape_destroy(img_outline);
+}
+
 void set_area(int i)
 {
     if (i == 1)

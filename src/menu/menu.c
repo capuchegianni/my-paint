@@ -41,4 +41,5 @@ void display_bar(void)
     sfRectangleShape_setOutlineThickness(rect, 1);
     sfRectangleShape_setOutlineColor(rect, sfBlack);
     sfRenderWindow_drawRectangleShape(window, rect, NULL);
+    sfRectangleShape_destroy(rect);
 }
