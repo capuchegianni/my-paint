@@ -5,7 +5,9 @@
 ## Makefile to compile the project
 ##
 
-SRC = 	./src/main.c							\
+NAME = my_paint
+
+SRC := 	./src/main.c							\
 		./src/menu/menu.c						\
 		./src/menu/edition/editionmenu.c		\
 		./src/menu/edition/eraser.c				\
@@ -23,9 +25,7 @@ SRC = 	./src/main.c							\
 		./src/workspace/draw.c					\
 		./src/menu/help/display_about.c 		\
 
-OBJ = $(SRC:.c=.o)
-
-NAME = my_paint
+OBJ := $(SRC:.c=.o)
 
 WARNING_FLAGS := -Wall -Wextra -W -g -g3 -ggdb
 
@@ -46,7 +46,6 @@ $(NAME): $(OBJ)
 	@echo -n "\e[1;34mOK\e[0m"
 	@echo -n " ] "
 	@echo "\e[1;32mSuccessfully compiled all the files\e[0m"
-	make clean
 
 clean:
 	make clean -sC lib/my/

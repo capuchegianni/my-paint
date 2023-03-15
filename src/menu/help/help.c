@@ -52,13 +52,13 @@ int click_helpbutton(buttonmenu_t *button)
 int hover_helpbutton(buttonmenu_t *button)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
-    sfVector2f button_pos = sfRectangleShape_getPosition(button->rect);
-    sfVector2f button_size = sfRectangleShape_getSize(button->rect);
+    sfVector2u window_size = sfRenderWindow_getSize(window);
+    sfFloatRect button_size = sfRectangleShape_getGlobalBounds(button->rect);
+    double x_ratio = (double)window_size.x / 1920;
+    double y_ratio = (double)window_size.y / 1016;
 
-    if (mouse_pos.x >= button_pos.x &&
-    mouse_pos.x <= button_pos.x + button_size.x &&
-    mouse_pos.y >= button_pos.y &&
-    mouse_pos.y <= button_pos.y + button_size.y) {
+    if (sfFloatRect_contains(&button_size, (mouse_pos.x / x_ratio),
+    (mouse_pos.y / y_ratio)) == sfTrue) {
         button->hover = 1;
         sfRectangleShape_setFillColor(button->rect,
         sfColor_fromRGB(181, 181, 181));
