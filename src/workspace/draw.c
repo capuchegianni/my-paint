@@ -13,7 +13,8 @@ void draw_three(sfVector2i mouse_pos, sfVector2f area_pos, unsigned y)
     double x_ratio = (double)window_size.x / 1920;
 
     for (unsigned i = 0,
-    x = ((mouse_pos.x / x_ratio) - area_pos.x - tools->current_tool->size) / area->scale.x;
+    x = ((mouse_pos.x / x_ratio) - area_pos.x - tools->current_tool->size)
+    / area->scale.x;
     i <= (unsigned)(tools->current_tool->size * 2) ; x++, i++) {
         if (x < area->img_size.x)
             sfImage_setPixel(area->image, x, y, tools->current_tool->color);
@@ -26,7 +27,8 @@ void draw_two(sfVector2i mouse_pos, sfVector2f area_pos)
     double y_ratio = (double)window_size.y / 1016;
 
     for (unsigned i = 0 ,
-    y = ((mouse_pos.y / y_ratio) - area_pos.y - tools->current_tool->size) / area->scale.y;
+    y = ((mouse_pos.y / y_ratio) - area_pos.y - tools->current_tool->size)
+    / area->scale.y;
     i <= (unsigned)(tools->current_tool->size * 2) ; y++, i++) {
         if (y < area->img_size.y) {
             draw_three(mouse_pos, area_pos, y);
