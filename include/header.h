@@ -63,6 +63,7 @@
     tool_bar_t *eraser_size(tool_bar_t *bar);
     void hover_eraserless(tool_bar_t *bar);
     void hover_erasermore(tool_bar_t *bar);
+    void display_colors(void);
     tool_bar_t *pencil_shape(tool_bar_t *bar);
     void hover_pencilsquare(tool_bar_t *bar);
     void hover_pencilcircle(tool_bar_t *bar);

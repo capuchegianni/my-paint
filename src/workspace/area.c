@@ -37,10 +37,31 @@ void set_area(int i)
     sfSprite_setScale(area->sprite, area->scale);
 }
 
+int check_extension(char **av)
+{
+    if (my_strncmp(av[1] + my_strlen(av[1]) - 4, ".jpg", 4) == 0)
+        return 1;
+    if (my_strncmp(av[1] + my_strlen(av[1]) - 4, ".png", 4) == 0)
+        return 1;
+    if (my_strncmp(av[1] + my_strlen(av[1]) - 4, ".bmp", 4) == 0)
+        return 1;
+    if (my_strncmp(av[1] + my_strlen(av[1]) - 4, ".gif", 4) == 0)
+        return 1;
+    if (my_strncmp(av[1] + my_strlen(av[1]) - 4, ".tga", 4) == 0)
+        return 1;
+    if (my_strncmp(av[1] + my_strlen(av[1]) - 4, ".pic", 4) == 0)
+        return 1;
+    if (my_strncmp(av[1] + my_strlen(av[1]) - 4, ".psd", 4) == 0)
+        return 1;
+    if (my_strncmp(av[1] + my_strlen(av[1]) - 4, ".hdr", 4) == 0)
+        return 1;
+    return 0;
+}
+
 void init_area(char **av)
 {
     area = malloc(sizeof(draw_area_t));
-    if (av[1] != NULL) {
+    if (av[1] != NULL && check_extension(av) == 1) {
         area->image = sfImage_createFromFile(av[1]);
         area->save_path = av[1];
     } else {

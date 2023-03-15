@@ -26,12 +26,13 @@ void click_eraserless(tool_bar_t *bar)
 void hover_eraserless(tool_bar_t *bar)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
-    sfVector2f button_pos = bar->eraser_size->less->pos;
-    sfVector2f button_size = bar->eraser_size->less->size;
-    if (mouse_pos.x >= button_pos.x &&
-    mouse_pos.x <= button_pos.x + button_size.x &&
-    mouse_pos.y >= button_pos.y &&
-    mouse_pos.y <= button_pos.y + button_size.y) {
+    sfVector2u window_size = sfRenderWindow_getSize(window);
+    sfFloatRect infos =
+    sfRectangleShape_getGlobalBounds(bar->eraser_size->less->rect);
+    double x_ratio = (double)window_size.x / 1920;
+    double y_ratio = (double)window_size.y / 1016;
+    if (sfFloatRect_contains(&infos, (mouse_pos.x / x_ratio),
+    (mouse_pos.y / y_ratio)) == sfTrue) {
         sfRectangleShape_setFillColor(bar->eraser_size->less->rect,
         sfColor_fromRGB(181, 181, 181));
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
@@ -39,8 +40,7 @@ void hover_eraserless(tool_bar_t *bar)
             sfRectangleShape_setFillColor(bar->eraser_size->less->rect,
             sfColor_fromRGB(169, 169, 169));
             sfSleep(sfMilliseconds(150));
-        }
-        click_eraserless(bar);
+        } click_eraserless(bar);
     } else {
         sfRectangleShape_setFillColor(bar->eraser_size->less->rect,
         bar->eraser_size->less->color);

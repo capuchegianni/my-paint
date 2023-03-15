@@ -32,6 +32,7 @@ SRC := 	./src/main.c								\
 		./src/tool_bar/pencil_size/pencil_less.c	\
 		./src/tool_bar/pencil_size/pencil_more.c	\
 		./src/tool_bar/pencil_size/pencil_size.c	\
+		./src/tool_bar/colors/rectangle_color.c 	\
 		./src/tool_bar/pencil_shape/pencil_shape.c	\
 		./src/tool_bar/pencil_shape/pencil_square.c	\
 		./src/tool_bar/pencil_shape/pencil_circle.c	\
