@@ -39,7 +39,7 @@ void hover_eraserless(tool_bar_t *bar)
             bar->eraser_size->less->clicked = 1;
             sfRectangleShape_setFillColor(bar->eraser_size->less->rect,
             sfColor_fromRGB(169, 169, 169));
-            return;
+            sfSleep(sfMilliseconds(150));
         } click_eraserless(bar);
     } else {
         sfRectangleShape_setFillColor(bar->eraser_size->less->rect,

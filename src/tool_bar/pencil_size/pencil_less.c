@@ -39,7 +39,7 @@ void hover_pencilless(tool_bar_t *bar)
             bar->pencil_size->less->clicked = 1;
             sfRectangleShape_setFillColor(bar->pencil_size->less->rect,
             sfColor_fromRGB(169, 169, 169));
-            return;
+            sfSleep(sfMilliseconds(150));
         } click_pencilless(bar);
     } else {
         sfRectangleShape_setFillColor(bar->pencil_size->less->rect,
