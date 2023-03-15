@@ -74,4 +74,6 @@ void display_toolbar(tool_bar_t *bar)
     display_eraser_size(bar);
     display_pencil_shape(bar);
     display_eraser_shape(bar);
+    display_color_text();
+    display_colors();
 }

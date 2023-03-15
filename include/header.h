@@ -70,6 +70,7 @@
     tool_bar_t *eraser_shape(tool_bar_t *bar);
     void hover_erasersquare(tool_bar_t *bar);
     void hover_erasercircle(tool_bar_t *bar);
+    void display_color_text(void);
 
     extern sfRenderWindow *window;
     extern draw_area_t *area;
