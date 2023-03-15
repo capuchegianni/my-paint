@@ -53,7 +53,16 @@
     void init_area(char **av);
     void draw(void);
     void set_area(int i);
+    void outline_area(void);
     void display_about(char *login1, char *login2, buttonmenu_t *back);
+    tool_bar_t *tool_bar(void);
+    void display_toolbar(tool_bar_t *bar);
+    tool_bar_t *pencil_size(tool_bar_t *bar);
+    void hover_pencilless(tool_bar_t *bar);
+    void hover_pencilmore(tool_bar_t *bar);
+    tool_bar_t *eraser_size(tool_bar_t *bar);
+    void hover_eraserless(tool_bar_t *bar);
+    void hover_erasermore(tool_bar_t *bar);
 
     extern sfRenderWindow *window;
     extern draw_area_t *area;
