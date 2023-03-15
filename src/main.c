@@ -26,6 +26,7 @@ global_editionmenu_t **global_editionmenu, global_helpmenu_t **global_helpmenu)
     global_editionmenu_cp->editionmenu = init_editionmenu();
     global_editionmenu_cp->eraser = init_eraserbutton();
     global_editionmenu_cp->pencil = init_pencilbutton();
+    global_editionmenu_cp->bucket = init_bucketbutton();
     *global_editionmenu = global_editionmenu_cp;
 
     global_helpmenu_t *global_helpmenu_cp = malloc(sizeof(global_helpmenu_t));
@@ -48,6 +49,11 @@ void init_tools(void)
     tools->eraser->size = 5;
     tools->eraser->color = sfWhite;
     tools->eraser->shape = 0;
+
+    tools->bucket = malloc(sizeof(tool_t));
+    tools->bucket->size = 3000;
+    tools->bucket->color = sfBlack;
+    tools->bucket->shape = 0;
 
     tools->current_tool = malloc(sizeof(tool_t));
     tools->current_tool = tools->pencil;

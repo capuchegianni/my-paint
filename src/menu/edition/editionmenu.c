@@ -8,7 +8,7 @@
 #include "../../../include/header.h"
 
 void display_editionbuttons(buttonmenu_t *pencilbutton,
-buttonmenu_t *eraserbutton, editionmenu_t *menu)
+buttonmenu_t *eraserbutton, buttonmenu_t *bucketbutton,editionmenu_t *menu)
 {
     if (hover_eraserbutton(eraserbutton) == 1) {
         sfRectangleShape_setFillColor(menu->rect, menu->color);
@@ -22,10 +22,16 @@ buttonmenu_t *eraserbutton, editionmenu_t *menu)
     }
     sfRenderWindow_drawRectangleShape(window, pencilbutton->rect, NULL);
     sfRenderWindow_drawText(window, pencilbutton->text, NULL);
+    if (hover_bucketbutton(bucketbutton) == 1) {
+        sfRectangleShape_setFillColor(menu->rect, menu->color);
+        menu->clicked = 0;
+    }
+    sfRenderWindow_drawRectangleShape(window, bucketbutton->rect, NULL);
+    sfRenderWindow_drawText(window, bucketbutton->text, NULL);
 }
 
 void click_editionmenu(editionmenu_t *menu, buttonmenu_t *pencilbutton,
-buttonmenu_t *eraserbutton)
+buttonmenu_t *eraserbutton, buttonmenu_t *bucketbutton)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfVector2u window_size = sfRenderWindow_getSize(window);
@@ -46,11 +52,11 @@ buttonmenu_t *eraserbutton)
         sfRectangleShape_setFillColor(menu->rect, menu->color);
         menu->hover = 0;
     } if (menu->clicked == 1)
-        display_editionbuttons(pencilbutton, eraserbutton, menu);
+        display_editionbuttons(pencilbutton, eraserbutton, bucketbutton, menu);
 }
 
 void hover_editionmenu(editionmenu_t *menu, buttonmenu_t *pencilbutton,
-buttonmenu_t *eraserbutton)
+buttonmenu_t *eraserbutton, buttonmenu_t *bucketbutton)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfVector2f menu_pos = sfRectangleShape_getPosition(menu->rect);
@@ -59,11 +65,11 @@ buttonmenu_t *eraserbutton)
     double x_ratio = (double)window_size.x / 1920;
     double y_ratio = (double)window_size.y / 1016;
 
-    click_editionmenu(menu, pencilbutton, eraserbutton);
+    click_editionmenu(menu, pencilbutton, eraserbutton, bucketbutton);
     if ((mouse_pos.x / x_ratio) < menu_pos.x ||
     (mouse_pos.x / x_ratio) > menu_pos.x + menu_size.x ||
     (mouse_pos.y / y_ratio) < menu_pos.y ||
-    (mouse_pos.y / y_ratio) > menu_pos.y + (menu_size.y * 3)) {
+    (mouse_pos.y / y_ratio) > menu_pos.y + (menu_size.y * 4)) {
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
             sfRectangleShape_setFillColor(menu->rect, menu->color);
             menu->clicked = 0;

@@ -81,6 +81,7 @@
         editionmenu_t *editionmenu;
         buttonmenu_t *eraser;
         buttonmenu_t *pencil;
+        buttonmenu_t *bucket;
     } global_editionmenu_t;
 
     typedef struct global_helpmenu {
@@ -108,6 +109,7 @@
     typedef struct manage_tools {
         tool_t *pencil;
         tool_t *eraser;
+        tool_t *bucket;
         tool_t *current_tool;
     } manage_tools_t;
 

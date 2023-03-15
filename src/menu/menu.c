@@ -13,7 +13,8 @@ global_editionmenu_t *global_editionmenu, global_helpmenu_t *global_helpmenu)
     hover_filemenu(global_filemenu->filemenu, global_filemenu->newfile,
     global_filemenu->openfile, global_filemenu->savefile);
     hover_editionmenu(global_editionmenu->editionmenu,
-    global_editionmenu->pencil, global_editionmenu->eraser);
+    global_editionmenu->pencil, global_editionmenu->eraser,
+    global_editionmenu->bucket);
     hover_helpmenu(global_helpmenu->helpmenu,
     global_helpmenu->about, global_helpmenu->help);
 
