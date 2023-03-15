@@ -7,43 +7,6 @@
 
 #include "../../include/header.h"
 
-void display_pencil_size(tool_bar_t *bar)
-{
-    sfRenderWindow_drawText(window, bar->pencil_size->text, NULL);
-    sfRenderWindow_drawText(window, bar->pencil_size->tnbr, NULL);
-    sfRenderWindow_drawRectangleShape(window,
-    bar->pencil_size->less->rect, NULL);
-    sfRenderWindow_drawText(window, bar->pencil_size->less->text, NULL);
-    sfRenderWindow_drawRectangleShape(window,
-    bar->pencil_size->more->rect, NULL);
-    sfRenderWindow_drawText(window, bar->pencil_size->more->text, NULL);
-}
-
-void display_eraser_size(tool_bar_t *bar)
-{
-    sfRenderWindow_drawText(window, bar->eraser_size->text, NULL);
-    sfRenderWindow_drawText(window, bar->eraser_size->tnbr, NULL);
-    sfRenderWindow_drawRectangleShape(window,
-    bar->eraser_size->less->rect, NULL);
-    sfRenderWindow_drawText(window, bar->eraser_size->less->text, NULL);
-    sfRenderWindow_drawRectangleShape(window,
-    bar->eraser_size->more->rect, NULL);
-    sfRenderWindow_drawText(window, bar->eraser_size->more->text, NULL);
-}
-
-void display_toolbar(tool_bar_t *bar)
-{
-    hover_pencilless(bar);
-    hover_pencilmore(bar);
-    hover_eraserless(bar);
-    hover_erasermore(bar);
-
-    sfRenderWindow_drawRectangleShape(window, bar->rect, NULL);
-
-    display_pencil_size(bar);
-    display_eraser_size(bar);
-}
-
 tool_bar_t *tool_bar(void)
 {
     tool_bar_t *bar = malloc(sizeof(tool_bar_t));
@@ -59,6 +22,8 @@ tool_bar_t *tool_bar(void)
 
     bar = pencil_size(bar);
     bar = eraser_size(bar);
+    bar = pencil_shape(bar);
+    bar = eraser_shape(bar);
 
     return (bar);
 }

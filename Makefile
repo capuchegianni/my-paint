@@ -25,12 +25,19 @@ SRC := 	./src/main.c								\
 		./src/workspace/draw.c						\
 		./src/menu/help/display_about.c 			\
 		./src/tool_bar/bar.c						\
+		./src/tool_bar/display_submenu.c			\
 		./src/tool_bar/eraser_size/eraser_less.c	\
 		./src/tool_bar/eraser_size/eraser_more.c	\
 		./src/tool_bar/eraser_size/eraser_size.c	\
 		./src/tool_bar/pencil_size/pencil_less.c	\
 		./src/tool_bar/pencil_size/pencil_more.c	\
 		./src/tool_bar/pencil_size/pencil_size.c	\
+		./src/tool_bar/pencil_shape/pencil_shape.c	\
+		./src/tool_bar/pencil_shape/pencil_square.c	\
+		./src/tool_bar/pencil_shape/pencil_circle.c	\
+		./src/tool_bar/eraser_shape/eraser_shape.c	\
+		./src/tool_bar/eraser_shape/eraser_square.c	\
+		./src/tool_bar/eraser_shape/eraser_circle.c	\
 
 OBJ := $(SRC:.c=.o)
 

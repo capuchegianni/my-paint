@@ -14,7 +14,6 @@ int click_savefilebutton(buttonmenu_t *button)
         button->clicked = 1;
         sfRectangleShape_setFillColor(button->rect,
         sfColor_fromRGB(169, 169, 169));
-        return (0);
     }
     if (button->clicked == 1) {
         sfSprite_setScale(area->sprite,
