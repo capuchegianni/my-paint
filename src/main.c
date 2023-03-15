@@ -42,10 +42,12 @@ void init_tools(void)
     tools->pencil = malloc(sizeof(tool_t));
     tools->pencil->size = 5;
     tools->pencil->color = sfBlack;
+    tools->pencil->shape = 0;
 
     tools->eraser = malloc(sizeof(tool_t));
     tools->eraser->size = 5;
     tools->eraser->color = sfWhite;
+    tools->eraser->shape = 0;
 
     tools->current_tool = malloc(sizeof(tool_t));
     tools->current_tool = tools->pencil;

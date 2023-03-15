@@ -63,6 +63,12 @@
     tool_bar_t *eraser_size(tool_bar_t *bar);
     void hover_eraserless(tool_bar_t *bar);
     void hover_erasermore(tool_bar_t *bar);
+    tool_bar_t *pencil_shape(tool_bar_t *bar);
+    void hover_pencilsquare(tool_bar_t *bar);
+    void hover_pencilcircle(tool_bar_t *bar);
+    tool_bar_t *eraser_shape(tool_bar_t *bar);
+    void hover_erasersquare(tool_bar_t *bar);
+    void hover_erasercircle(tool_bar_t *bar);
 
     extern sfRenderWindow *window;
     extern draw_area_t *area;

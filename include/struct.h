@@ -145,6 +145,38 @@
         more_t *more;
     } eraser_size_t;
 
+    typedef struct square {
+        sfRectangleShape *out;
+        sfRectangleShape *form;
+        sfVector2f pos;
+        sfVector2f size;
+        sfColor color;
+        int clicked;
+    } square_t;
+
+    typedef struct circle {
+        sfRectangleShape *out;
+        sfCircleShape *form;
+        sfVector2f pos;
+        sfVector2f size;
+        sfColor color;
+        int clicked;
+    } circle_t;
+
+    typedef struct eraser_shape {
+        sfText *text;
+        square_t *square;
+        circle_t *circle;
+        int sf;
+    } eraser_shape_t;
+
+    typedef struct pencil_shape {
+        sfText *text;
+        square_t *square;
+        circle_t *circle;
+        int sf;
+    } pencil_shape_t;
+
     typedef struct tool_bar {
         sfRectangleShape *rect;
         sfVector2f pos;
@@ -152,6 +184,8 @@
         sfColor color;
         pencil_size_t *pencil_size;
         eraser_size_t *eraser_size;
+        pencil_shape_t *pencil_shape;
+        eraser_shape_t *eraser_shape;
     } tool_bar_t;
 
 #endif /* !STRUCT_H_ */
