@@ -104,12 +104,14 @@
         int size;
         int shape;
         sfColor color;
+        sfTexture *texture;
     } tool_t;
 
     typedef struct manage_tools {
         tool_t *pencil;
         tool_t *eraser;
         tool_t *bucket;
+        tool_t *color_picker;
         tool_t *current_tool;
     } manage_tools_t;
 

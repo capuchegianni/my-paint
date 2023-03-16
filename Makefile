@@ -8,10 +8,12 @@
 NAME = my_paint
 
 SRC := 	./src/main.c								\
+		./src/init_tools.c							\
 		./src/menu/menu.c							\
 		./src/menu/edition/editionmenu.c			\
 		./src/menu/edition/eraser.c					\
 		./src/menu/edition/pencil.c					\
+		./src/menu/edition/bucket.c					\
 		./src/menu/file/filemenu.c					\
 		./src/menu/file/newfile.c					\
 		./src/menu/file/openfile.c					\
@@ -25,6 +27,7 @@ SRC := 	./src/main.c								\
 		./src/workspace/draw.c						\
 		./src/workspace/square_shape.c				\
 		./src/workspace/circle_shape.c				\
+		./src/workspace/tools_cursor.c 				\
 		./src/menu/help/display_about.c 			\
 		./src/tool_bar/bar.c						\
 		./src/tool_bar/display_submenu.c			\
@@ -41,8 +44,6 @@ SRC := 	./src/main.c								\
 		./src/tool_bar/eraser_shape/eraser_shape.c	\
 		./src/tool_bar/eraser_shape/eraser_square.c	\
 		./src/tool_bar/eraser_shape/eraser_circle.c	\
-		./src/menu/edition/bucket.c					\
-		./src/workspace/tools_cursor.c 				\
 
 OBJ := $(SRC:.c=.o)
 

@@ -11,30 +11,25 @@ void pencil_cursor(double x_ratio, double y_ratio)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfSprite *sprite = sfSprite_create();
-    sfTexture *texture =
-    sfTexture_createFromFile("assets/images/pencil.png", NULL);
     sfVector2f scale = {0.03, 0.03};
 
-    sfSprite_setTexture(sprite, texture, sfTrue);
+    sfSprite_setTexture(sprite, tools->pencil->texture, sfTrue);
     sfSprite_setScale(sprite, scale);
     sfSprite_setPosition(sprite, (sfVector2f){(mouse_pos.x / x_ratio),
     (mouse_pos.y / y_ratio)});
     sfRenderWindow_drawSprite(window, sprite, NULL);
     sfRenderWindow_setMouseCursorVisible(window, sfFalse);
     sfSprite_destroy(sprite);
-    sfTexture_destroy(texture);
 }
 
 void eraser_cursor(double x_ratio, double y_ratio)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfSprite *sprite = sfSprite_create();
-    sfTexture *texture =
-    sfTexture_createFromFile("assets/images/eraser.png", NULL);
-    sfVector2u sprite_size = sfTexture_getSize(texture);
+    sfVector2u sprite_size = sfTexture_getSize(tools->eraser->texture);
     sfVector2f scale = {0.05, 0.05};
 
-    sfSprite_setTexture(sprite, texture, sfTrue);
+    sfSprite_setTexture(sprite, tools->eraser->texture, sfTrue);
     sfSprite_setScale(sprite, scale);
     sfSprite_setRotation(sprite, 90);
     sfSprite_setOrigin(sprite, (sfVector2f){sprite_size.x / 4,
@@ -44,25 +39,38 @@ void eraser_cursor(double x_ratio, double y_ratio)
     sfRenderWindow_drawSprite(window, sprite, NULL);
     sfRenderWindow_setMouseCursorVisible(window, sfFalse);
     sfSprite_destroy(sprite);
-    sfTexture_destroy(texture);
 }
 
 void bucket_cursor(double x_ratio, double y_ratio)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfSprite *sprite = sfSprite_create();
-    sfTexture *texture =
-    sfTexture_createFromFile("assets/images/bucket.png", NULL);
     sfVector2f scale = {0.05, 0.05};
 
-    sfSprite_setTexture(sprite, texture, sfTrue);
+    sfSprite_setTexture(sprite, tools->bucket->texture, sfTrue);
     sfSprite_setScale(sprite, scale);
     sfSprite_setPosition(sprite, (sfVector2f){(mouse_pos.x / x_ratio),
     (mouse_pos.y / y_ratio)});
     sfRenderWindow_drawSprite(window, sprite, NULL);
     sfRenderWindow_setMouseCursorVisible(window, sfFalse);
     sfSprite_destroy(sprite);
-    sfTexture_destroy(texture);
+}
+
+void color_picker_cursor(double x_ratio, double y_ratio)
+{
+    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
+    sfSprite *sprite = sfSprite_create();
+    sfVector2f scale = {0.05, 0.05};
+    sfVector2u sprite_size = sfTexture_getSize(tools->color_picker->texture);
+
+    sfSprite_setOrigin(sprite, (sfVector2f){0, sprite_size.y});
+    sfSprite_setTexture(sprite, tools->color_picker->texture, sfTrue);
+    sfSprite_setScale(sprite, scale);
+    sfSprite_setPosition(sprite, (sfVector2f){(mouse_pos.x / x_ratio),
+    (mouse_pos.y / y_ratio)});
+    sfRenderWindow_drawSprite(window, sprite, NULL);
+    sfRenderWindow_setMouseCursorVisible(window, sfFalse);
+    sfSprite_destroy(sprite);
 }
 
 void choose_cursor(double x_ratio, double y_ratio)

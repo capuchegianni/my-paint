@@ -36,29 +36,6 @@ global_editionmenu_t **global_editionmenu, global_helpmenu_t **global_helpmenu)
     *global_helpmenu = global_helpmenu_cp;
 }
 
-void init_tools(void)
-{
-    tools = malloc(sizeof(manage_tools_t));
-
-    tools->pencil = malloc(sizeof(tool_t));
-    tools->pencil->size = 5;
-    tools->pencil->color = sfBlack;
-    tools->pencil->shape = 0;
-
-    tools->eraser = malloc(sizeof(tool_t));
-    tools->eraser->size = 5;
-    tools->eraser->color = sfWhite;
-    tools->eraser->shape = 0;
-
-    tools->bucket = malloc(sizeof(tool_t));
-    tools->bucket->size = 5000;
-    tools->bucket->color = sfBlack;
-    tools->bucket->shape = 0;
-
-    tools->current_tool = malloc(sizeof(tool_t));
-    tools->current_tool = tools->pencil;
-}
-
 void init(char **av, global_filemenu_t **global_filemenu,
 global_editionmenu_t **global_editionmenu, global_helpmenu_t **global_helpmenu)
 {
