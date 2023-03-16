@@ -73,13 +73,20 @@ int start_window(char **av)
 
 int main(int ac, char **av)
 {
+    int i = 0;
+
     if (ac != 1 && !av[0])
         return (84);
-
     if (av[1] && open(av[1], O_RDONLY) == -1) {
         my_printerr("Error: File not found.\n");
         return (84);
     }
-
+    for (; av[1] && av[1][i] ; i++)
+        if (av[1][i] == '.')
+            break;
+    if (i == my_strlen(av[1])) {
+        my_printerr("Error: not a valid file.\n");
+        return 84;
+    }
     return (start_window(av));
 }
