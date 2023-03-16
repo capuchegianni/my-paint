@@ -13,7 +13,7 @@ int my_close_window(sfRenderWindow *window)
     sfEvent event;
 
     while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed){
+        if (event.type == sfEvtClosed) {
             sfRenderWindow_close(window);
             return 1;
         }

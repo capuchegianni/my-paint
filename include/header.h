@@ -21,7 +21,7 @@
     #include "my_csfml.h"
 
     void hover_editionmenu(editionmenu_t *menu, buttonmenu_t *pencilbutton,
-    buttonmenu_t *eraserbutton);
+    buttonmenu_t *eraserbutton, buttonmenu_t *bucketbutton);
     void hover_filemenu(filemenu_t *menu, buttonmenu_t *newfile,
     buttonmenu_t *openfile, buttonmenu_t *savefile);
     void hover_helpmenu(helpmenu_t *menu, buttonmenu_t *about,
@@ -72,6 +72,9 @@
     void hover_erasersquare(tool_bar_t *bar);
     void hover_erasercircle(tool_bar_t *bar);
     void display_color_text(void);
+    int hover_bucketbutton(buttonmenu_t *button);
+    buttonmenu_t *init_bucketbutton(void);
+    void choose_cursor(double x_ratio, double y_ratio);
     void draw_square(sfVector2i mouse_pos, sfVector2f area_pos,
     double y_ratio, double x_ratio);
     void draw_circle(sfVector2i mouse_pos, sfVector2f area_pos,

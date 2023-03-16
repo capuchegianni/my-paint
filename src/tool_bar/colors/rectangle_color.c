@@ -19,7 +19,8 @@ void change_color(sfRectangleShape *rect)
     (mous_pos.y / y_ratio)) == sfTrue) {
         if (sfMouse_isButtonPressed(sfMouseLeft) == sfTrue) {
             sfColor color = sfRectangleShape_getFillColor(rect);
-            tools->pencil->color = color;
+            (tools->current_tool != tools->eraser) ?
+            tools->current_tool->color = color : sfWhite;
         }
     }
 }
