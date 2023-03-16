@@ -23,7 +23,8 @@ void add_heart(void)
 
 void add_important(void)
 {
-    sfTexture *important = sfTexture_createFromFile("assets/images/bonus.png",NULL);
+    sfTexture *important = sfTexture_createFromFile
+    ("assets/images/bonus.png",NULL);
     sfSprite *important_sprite = sfSprite_create();
     sfVector2f important_pos = {120, 500};
 
