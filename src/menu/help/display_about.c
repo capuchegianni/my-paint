@@ -9,7 +9,7 @@
 
 void add_nous(void)
 {
-    sfTexture *nous = sfTexture_createFromFile("assets/images/nous.jpg", NULL);
+    sfTexture *nous = sfTexture_createFromFile("assets/images/nous.png", NULL);
     sfSprite *nous_sprite = sfSprite_create();
     sfVector2f nous_pos = {0, 101};
 
