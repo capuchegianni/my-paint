@@ -90,7 +90,7 @@ int start_window(char **av)
         display_toolbar(tbar);
         sfRenderWindow_display(window);
         my_close_window(window);
-    }
+    } sfRenderWindow_destroy(window);
     return (0);
 }
 
