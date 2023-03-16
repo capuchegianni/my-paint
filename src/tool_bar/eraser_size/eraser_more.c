@@ -14,11 +14,11 @@ void click_erasermore(tool_bar_t *bar)
         tools->eraser->size = bar->eraser_size->nbr;
         char *strnbr = my_tostr(bar->eraser_size->nbr);
         sfText_setString(bar->eraser_size->tnbr, strnbr);
-        sfText_setPosition(bar->eraser_size->tnbr, (sfVector2f){120, 405});
+        sfText_setPosition(bar->eraser_size->tnbr, (sfVector2f){120, 380});
         if (bar->eraser_size->nbr > 9)
-            sfText_setPosition(bar->eraser_size->tnbr, (sfVector2f){115, 405});
+            sfText_setPosition(bar->eraser_size->tnbr, (sfVector2f){115, 380});
         if (bar->eraser_size->nbr > 99)
-            sfText_setPosition(bar->eraser_size->tnbr, (sfVector2f){105, 405});
+            sfText_setPosition(bar->eraser_size->tnbr, (sfVector2f){105, 380});
         bar->eraser_size->more->clicked = 0;
     }
 }

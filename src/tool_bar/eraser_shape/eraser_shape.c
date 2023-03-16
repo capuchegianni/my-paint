@@ -14,7 +14,7 @@ void eraser_shapetext(tool_bar_t *bar)
     sfText_setFont(bar->eraser_shape->text, font);
     sfText_setString(bar->eraser_shape->text, "Eraser shape");
     sfText_setCharacterSize(bar->eraser_shape->text, 30);
-    sfText_setPosition(bar->eraser_shape->text, (sfVector2f){40, 595});
+    sfText_setPosition(bar->eraser_shape->text, (sfVector2f){40, 565});
     sfText_setColor(bar->eraser_shape->text, sfBlack);
 }
 
@@ -36,7 +36,7 @@ void eraser_square(tool_bar_t *bar)
     sfRectangleShape_setSize(bar->eraser_shape->square->form,
     (sfVector2f){30, 30});
     sfRectangleShape_setPosition(bar->eraser_shape->square->form,
-    (sfVector2f){75, 670});
+    (sfVector2f){75, 640});
     sfRectangleShape_setFillColor(bar->eraser_shape->square->form, sfBlack);
 }
 
@@ -57,7 +57,7 @@ void eraser_circle(tool_bar_t *bar)
     (sfVector2f){15, 15});
     sfCircleShape_setRadius(bar->eraser_shape->circle->form, 15);
     sfCircleShape_setPosition(bar->eraser_shape->circle->form,
-    (sfVector2f){175, 670});
+    (sfVector2f){175, 640});
     sfCircleShape_setFillColor(bar->eraser_shape->circle->form,
     sfBlack);
 }
@@ -65,13 +65,13 @@ void eraser_circle(tool_bar_t *bar)
 void init_eraser_vals(tool_bar_t *bar)
 {
     bar->eraser_shape->square->out = sfRectangleShape_create();
-    bar->eraser_shape->square->pos = (sfVector2f){75, 670};
+    bar->eraser_shape->square->pos = (sfVector2f){75, 640};
     bar->eraser_shape->square->size = (sfVector2f){40, 40};
     bar->eraser_shape->square->color = sfColor_fromRGB(194, 194, 194);
     bar->eraser_shape->square->clicked = 0;
 
     bar->eraser_shape->circle->out = sfRectangleShape_create();
-    bar->eraser_shape->circle->pos = (sfVector2f){175, 670};
+    bar->eraser_shape->circle->pos = (sfVector2f){175, 640};
     bar->eraser_shape->circle->size = (sfVector2f){40, 40};
     bar->eraser_shape->circle->color = sfColor_fromRGB(194, 194, 194);
     bar->eraser_shape->circle->clicked = 0;
