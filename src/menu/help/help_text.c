@@ -43,11 +43,13 @@ To fill the canvas with a color, you need to click on the left button of \
 your mouse while being above the canvas.";
     char *colors = "- You can pick a color directly on the canvas by \
 right clicking on the pixel where the color you want is.";
+    char *cursor = "- We changed the cursors for each tool available.";
 
     my_print_text(window, 30, (sfVector2f){10, 510}, "Bonus:");
     add_important();
     my_print_text(window, 20, (sfVector2f){20, 550}, bucket);
     my_print_text(window, 20, (sfVector2f){20, 580}, colors);
+    my_print_text(window, 20, (sfVector2f){20, 610}, cursor);
 }
 
 void file_help(void)
