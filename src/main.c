@@ -51,7 +51,7 @@ void init_tools(void)
     tools->eraser->shape = 0;
 
     tools->bucket = malloc(sizeof(tool_t));
-    tools->bucket->size = 3000;
+    tools->bucket->size = 5000;
     tools->bucket->color = sfBlack;
     tools->bucket->shape = 0;
 

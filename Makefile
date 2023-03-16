@@ -40,6 +40,7 @@ SRC := 	./src/main.c								\
 		./src/tool_bar/eraser_shape/eraser_square.c	\
 		./src/tool_bar/eraser_shape/eraser_circle.c	\
 		./src/menu/edition/bucket.c					\
+		./src/workspace/tools_cursor.c 				\
 
 OBJ := $(SRC:.c=.o)
 

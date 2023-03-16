@@ -54,7 +54,7 @@ buttonmenu_t *set_bucketbutton(buttonmenu_t *button)
     sfRectangleShape_setOutlineThickness(button->rect, 1);
     sfRectangleShape_setOutlineColor(button->rect, sfBlack);
 
-    sfText_setString(button->text, "bucket");
+    sfText_setString(button->text, "Bucket");
     sfText_setColor(button->text, button->text_color);
     sfText_setFont(button->text, button->font);
     sfText_setCharacterSize(button->text, button->text_size);

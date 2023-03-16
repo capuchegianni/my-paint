@@ -47,7 +47,9 @@ void pick_three(sfVector2i mouse_pos, sfVector2f area_pos, unsigned y)
     / area->scale.x;
     i <= (unsigned)(tools->current_tool->size * 2) ; x++, i++) {
         if (x < area->img_size.x)
-            tools->current_tool->color = sfImage_getPixel(area->image, x, y);
+            (tools->current_tool != tools->eraser) ?
+            tools->current_tool->color =
+            sfImage_getPixel(area->image, x, y) : sfWhite;
     }
 }
 
@@ -79,9 +81,11 @@ void draw(void)
     (mouse_pos.x / x_ratio) < area_pos.x + area->img_size.x * area->scale.x &&
     (mouse_pos.y / y_ratio) > area_pos.y &&
     (mouse_pos.y / y_ratio) < area_pos.y + area->img_size.y * area->scale.y) {
+        choose_cursor(x_ratio, y_ratio);
         if (sfMouse_isButtonPressed(sfMouseLeft))
             draw_two(mouse_pos, area_pos);
         if (sfMouse_isButtonPressed(sfMouseRight))
             pick_two(mouse_pos, area_pos);
-    }
+    } else
+        sfRenderWindow_setMouseCursorVisible(window, sfTrue);
 }

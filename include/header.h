@@ -73,6 +73,7 @@
     void display_color_text(void);
     int hover_bucketbutton(buttonmenu_t *button);
     buttonmenu_t *init_bucketbutton(void);
+    void choose_cursor(double x_ratio, double y_ratio);
 
     extern sfRenderWindow *window;
     extern draw_area_t *area;
