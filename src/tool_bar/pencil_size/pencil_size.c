@@ -27,11 +27,11 @@ void pencil_nbr(tool_bar_t *bar)
     char *strnbr = my_tostr(bar->pencil_size->nbr);
     sfText_setString(bar->pencil_size->tnbr, strnbr);
     sfText_setCharacterSize(bar->pencil_size->tnbr, 30);
-    sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){120, 280});
+    sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){120, 270});
     if (bar->pencil_size->nbr > 9)
-        sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){115, 280});
+        sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){115, 270});
     if (bar->pencil_size->nbr > 99)
-        sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){110, 280});
+        sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){110, 270});
     sfText_setColor(bar->pencil_size->tnbr, sfBlack);
 }
 
@@ -39,7 +39,7 @@ void pencil_less(tool_bar_t *bar)
 {
     bar->pencil_size->less->rect = sfRectangleShape_create();
     bar->pencil_size->less->size = (sfVector2f){20, 20};
-    bar->pencil_size->less->pos = (sfVector2f){62, 290};
+    bar->pencil_size->less->pos = (sfVector2f){62, 280};
     bar->pencil_size->less->color = sfColor_fromRGB(194, 194, 194);
     bar->pencil_size->less->text = sfText_create();
 
@@ -55,7 +55,7 @@ void pencil_less(tool_bar_t *bar)
     sfText_setFont(bar->pencil_size->less->text, font);
     sfText_setString(bar->pencil_size->less->text, "-");
     sfText_setCharacterSize(bar->pencil_size->less->text, 30);
-    sfText_setPosition(bar->pencil_size->less->text, (sfVector2f){65, 282});
+    sfText_setPosition(bar->pencil_size->less->text, (sfVector2f){65, 272});
     sfText_setColor(bar->pencil_size->less->text, sfBlack);
 }
 
@@ -63,7 +63,7 @@ void pencil_more(tool_bar_t *bar)
 {
     bar->pencil_size->more->rect = sfRectangleShape_create();
     bar->pencil_size->more->size = (sfVector2f){20, 20};
-    bar->pencil_size->more->pos = (sfVector2f){170, 290};
+    bar->pencil_size->more->pos = (sfVector2f){170, 280};
     bar->pencil_size->more->color = sfColor_fromRGB(194, 194, 194);
     bar->pencil_size->more->text = sfText_create();
 
@@ -79,7 +79,7 @@ void pencil_more(tool_bar_t *bar)
     sfText_setFont(bar->pencil_size->more->text, font);
     sfText_setString(bar->pencil_size->more->text, "+");
     sfText_setCharacterSize(bar->pencil_size->more->text, 30);
-    sfText_setPosition(bar->pencil_size->more->text, (sfVector2f){173, 282});
+    sfText_setPosition(bar->pencil_size->more->text, (sfVector2f){173, 272});
     sfText_setColor(bar->pencil_size->more->text, sfBlack);
 }
 

@@ -14,7 +14,7 @@ void pencil_shapetext(tool_bar_t *bar)
     sfText_setFont(bar->pencil_shape->text, font);
     sfText_setString(bar->pencil_shape->text, "Pencil shape");
     sfText_setCharacterSize(bar->pencil_shape->text, 30);
-    sfText_setPosition(bar->pencil_shape->text, (sfVector2f){45, 475});
+    sfText_setPosition(bar->pencil_shape->text, (sfVector2f){45, 445});
     sfText_setColor(bar->pencil_shape->text, sfBlack);
 }
 
@@ -36,7 +36,7 @@ void pencil_square(tool_bar_t *bar)
     sfRectangleShape_setSize(bar->pencil_shape->square->form,
     (sfVector2f){30, 30});
     sfRectangleShape_setPosition(bar->pencil_shape->square->form,
-    (sfVector2f){75, 550});
+    (sfVector2f){75, 520});
     sfRectangleShape_setFillColor(bar->pencil_shape->square->form, sfBlack);
 }
 
@@ -57,7 +57,7 @@ void pencil_circle(tool_bar_t *bar)
     (sfVector2f){15, 15});
     sfCircleShape_setRadius(bar->pencil_shape->circle->form, 15);
     sfCircleShape_setPosition(bar->pencil_shape->circle->form,
-    (sfVector2f){175, 550});
+    (sfVector2f){175, 520});
     sfCircleShape_setFillColor(bar->pencil_shape->circle->form,
     sfBlack);
 }
@@ -65,13 +65,13 @@ void pencil_circle(tool_bar_t *bar)
 void init_pencil_vals(tool_bar_t *bar)
 {
     bar->pencil_shape->square->out = sfRectangleShape_create();
-    bar->pencil_shape->square->pos = (sfVector2f){75, 550};
+    bar->pencil_shape->square->pos = (sfVector2f){75, 520};
     bar->pencil_shape->square->size = (sfVector2f){40, 40};
     bar->pencil_shape->square->color = sfColor_fromRGB(194, 194, 194);
     bar->pencil_shape->square->clicked = 0;
 
     bar->pencil_shape->circle->out = sfRectangleShape_create();
-    bar->pencil_shape->circle->pos = (sfVector2f){175, 550};
+    bar->pencil_shape->circle->pos = (sfVector2f){175, 520};
     bar->pencil_shape->circle->size = (sfVector2f){40, 40};
     bar->pencil_shape->circle->color = sfColor_fromRGB(194, 194, 194);
     bar->pencil_shape->circle->clicked = 0;

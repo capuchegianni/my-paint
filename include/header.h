@@ -14,6 +14,7 @@
     #include <SFML/Network.h>
     #include <SFML/System.h>
     #include <SFML/Window.h>
+    #include <math.h>
 
     #include "struct.h"
     #include "my.h"
@@ -74,6 +75,10 @@
     int hover_bucketbutton(buttonmenu_t *button);
     buttonmenu_t *init_bucketbutton(void);
     void choose_cursor(double x_ratio, double y_ratio);
+    void draw_square(sfVector2i mouse_pos, sfVector2f area_pos,
+    double y_ratio, double x_ratio);
+    void draw_circle(sfVector2i mouse_pos, sfVector2f area_pos,
+    double y_ratio, double x_ratio);
 
     extern sfRenderWindow *window;
     extern draw_area_t *area;
