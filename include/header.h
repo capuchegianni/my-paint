@@ -35,6 +35,7 @@
     buttonmenu_t *init_helpbutton(void);
     buttonmenu_t *init_back(sfVector2f pos, sfVector2f size, int height);
     void init_area(char **av);
+    void init_tools(void);
 
     // Hover & Click
 
@@ -91,13 +92,12 @@
     double y_ratio, double x_ratio);
     void draw_circle(sfVector2i mouse_pos, sfVector2f area_pos,
     double y_ratio, double x_ratio);
-    void init_tools(void);
-    void color_picker_cursor(double x_ratio, double y_ratio);
 
     // Little things
 
     void base_prints(void);
     void choose_cursor(double x_ratio, double y_ratio);
+    void color_picker_cursor(double x_ratio, double y_ratio);
 
     // Extern variables
 
