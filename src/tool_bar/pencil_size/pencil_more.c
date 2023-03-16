@@ -14,11 +14,11 @@ void click_pencilmore(tool_bar_t *bar)
         tools->pencil->size = bar->pencil_size->nbr;
         char *strnbr = my_tostr(bar->pencil_size->nbr);
         sfText_setString(bar->pencil_size->tnbr, strnbr);
-        sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){120, 280});
+        sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){120, 270});
         if (bar->pencil_size->nbr > 9)
-            sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){115, 280});
+            sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){115, 270});
         if (bar->pencil_size->nbr > 99)
-            sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){105, 280});
+            sfText_setPosition(bar->pencil_size->tnbr, (sfVector2f){105, 270});
         bar->pencil_size->more->clicked = 0;
     }
 }

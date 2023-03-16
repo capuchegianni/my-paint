@@ -23,6 +23,8 @@ SRC := 	./src/main.c								\
 		./src/menu/help/back_button.c				\
 		./src/workspace/area.c						\
 		./src/workspace/draw.c						\
+		./src/workspace/square_shape.c				\
+		./src/workspace/circle_shape.c				\
 		./src/menu/help/display_about.c 			\
 		./src/tool_bar/bar.c						\
 		./src/tool_bar/display_submenu.c			\
