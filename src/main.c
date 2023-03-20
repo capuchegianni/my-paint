@@ -84,7 +84,7 @@ int main(int ac, char **av)
     for (; av[1] && av[1][i] ; i++)
         if (av[1][i] == '.')
             break;
-    if (i == my_strlen(av[1])) {
+    if (av[1] && i == my_strlen(av[1])) {
         my_printerr("Error: not a valid file.\n");
         return 84;
     }
